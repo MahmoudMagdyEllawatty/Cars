@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/']">
+        <ion-icon name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Services</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form" (ngSubmit)="submit(form.value)">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Enter Service Data</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input type="text" formControlName="name"></ion-input>
+        </ion-item>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validationMessages.name">
+            <div class="error-message" *ngIf="form.get('name').hasError(validation.type) && (form.get('name').dirty || form.get('name').touched)">
+              <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+
+        <ion-item>
+          <ion-label position="floating">Description</ion-label>
+          <ion-input type="text" formControlName="description"></ion-input>
+        </ion-item>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validationMessages.description">
+            <div class="error-message" *ngIf="form.get('description').hasError(validation.type) && (form.get('description').dirty || form.get('description').touched)">
+              <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+
+        <ion-item>
+          <ion-label position="floating">Price</ion-label>
+          <ion-input type="number" formControlName="price"></ion-input>
+        </ion-item>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validationMessages.price">
+            <div class="error-message" *ngIf="form.get('price').hasError(validation.type) && (form.get('price').dirty || form.get('price').touched)">
+              <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+
+        <ion-item>
+          <ion-label>Service Group</ion-label>
+          <ion-select formControlName="serviceGroup">
+            <ion-select-option *ngFor="let group of serviceGroups" value="{{group.id}}">{{ group.name }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+      </ion-card-content>
+
+      <ion-button class="btn" expand="full" type="submit" [disabled]="!form.valid">Save</ion-button>
+    </ion-card>
+  </form>
+
+
+  <ion-list>
+    <ion-item *ngFor="let service of services|async">
+      <p>{{ service.name }}</p>
+
+      <ion-button color="primary" slot="end" shape="round" (click)="edit(service)">
+        <ion-icon name="create"></ion-icon>
+      </ion-button>
+
+      <ion-button color="danger" slot="end" shape="round" (click)="delete(service)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+
+    </ion-item>
+  </ion-list>
+
+</ion-content>

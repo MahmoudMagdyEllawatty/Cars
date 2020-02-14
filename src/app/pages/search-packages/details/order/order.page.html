@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Order {{ aPackage.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides #testSlider pager="true" [options]="slideOpts" (ionSlideDidChange)="slideChanged($event)" (ionSlideTap)="slideTap($event)">
+    <ion-slide *ngFor="let item of aPackage.packageServices;let i=index">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            {{ item.serviceGroup.name}}
+          </ion-card-title>
+          <ion-card-subtitle>
+            Select {{ item.amount }} of Services
+          </ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-list *ngIf="item.amount > 1">
+            <ion-item *ngFor="let ser of item.services">
+              <ion-label>{{ser.name}}</ion-label>
+              <ion-checkbox slot="end" (ionChange)="checkData($event,ser,item.serviceGroup)"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+
+          <ion-list *ngIf="item.amount == 1">
+            <ion-radio-group [(ngModel)]="services[i]" (ionChange)="data()">
+              <ion-item *ngFor="let ser of item.services;let ii=index">
+                <ion-label>{{ser.name}}</ion-label>
+                <ion-radio slot="end" [value]="ser" checked *ngIf="ii < 1"></ion-radio>
+                <ion-radio slot="end" [value]="ser" *ngIf="ii > 0"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+
+
+        </ion-card-content>
+
+        <ion-button class="btn" expand="full" (click)="showData()" *ngIf="(i+1) == aPackage.packageServices.length">Save</ion-button>
+        <h1 *ngIf="(i+1) != aPackage.packageServices.length">Please, Flip to continue your request</h1>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

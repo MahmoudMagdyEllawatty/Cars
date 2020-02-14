@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Select Service Groups</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let group of groups|async">
+      <ion-grid>
+        <ion-row>
+          <h1>{{ group.name }}</h1>
+        </ion-row>
+        <ion-row>
+          <ion-button class="btn" color="success" expand="full"  (click)="openServices(group)">
+            Select Services
+          </ion-button>
+        </ion-row>
+      </ion-grid>
+
+
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="full"  (click)="done()">Done</ion-button>
+</ion-content>

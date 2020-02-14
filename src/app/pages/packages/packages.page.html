@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/']">
+        <ion-icon name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Packages</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['./add-package']">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-list>
+    <ion-item *ngFor="let aPackage of packages|async">
+        <ion-grid>
+          <ion-row>
+            <h1>{{ aPackage.name }}</h1>
+          </ion-row>
+          <ion-row>
+            <p> {{ aPackage.price }} KWD</p>
+          </ion-row>
+        </ion-grid>
+
+
+      <ion-button color="primary" slot="end" shape="round" [routerLink]="['./view-package/',aPackage.id]">
+        <ion-icon name="eye"></ion-icon>
+      </ion-button>
+      <ion-button color="danger" slot="end" shape="round" (click)="delete(aPackage)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/']">
+        <ion-icon name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Message Center</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form" (ngSubmit)="submit(form.value)">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          Enter Message Text To send
+        </ion-card-title>
+        <ion-card-content>
+          <ion-item>
+            <ion-input type="text" placeholder="Message Text" formControlName="text"></ion-input>
+          </ion-item>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validationMessages.text">
+              <div class="error-message" *ngIf="form.get('text').hasError(validation.type) && (form.get('text').dirty || form.get('text').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+        </ion-card-content>
+      </ion-card-header>
+      <ion-button class="btn" expand="full" type="submit" [disabled]="!form.valid">Send</ion-button>
+    </ion-card>
+  </form>
+
+  <ion-list>
+    <ion-item *ngFor="let msg of messages|async">
+      <h2>{{ msg.message }}</h2>
+    </ion-item>
+  </ion-list>
+</ion-content>

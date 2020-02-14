@@ -1,5 +1,7 @@
 {
   "name": "PartyCoordinator",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Payment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img src="../../../../../../../../assets/imgs/knet.jpeg" style="width: 100%">
+  <form [formGroup]="validationsForm"  (ngSubmit)="onSubmit(validationsForm.value)">
+    <ion-card>
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating" color="primary">Bank Name</ion-label>
+            <ion-select>
+              <ion-select-option>بنك الكويت الوطني | NBK</ion-select-option>
+              <ion-select-option>البنك الأهلي الكويتي | ABK</ion-select-option>
+              <ion-select-option>بيت التمويل الكويتي | KFH</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating" color="primary">Holder Name</ion-label>
+            <ion-input type="text" formControlName="cardHolder"></ion-input>
+          </ion-item>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validationMessages.cardHolder">
+              <div class="error-message" *ngIf="validationsForm.get('cardHolder').hasError(validation.type) && (validationsForm.get('cardHolder').dirty || validationsForm.get('cardHolder').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+          <ion-item>
+            <ion-label position="floating" color="primary">Card No</ion-label>
+            <ion-input (keypress)="validate($event)" (keyup)="addSpace()" formControlName="cardNo"  ></ion-input>
+          </ion-item>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validationMessages.cardNo">
+              <div class="error-message" *ngIf="validationsForm.get('cardNo').hasError(validation.type) && (validationsForm.get('cardNo').dirty || validationsForm.get('cardNo').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+
+          <ion-item>
+            <ion-label position="floating" color="primary">Expiry Month & year</ion-label>
+            <ion-input (keypress)="validate($event)" (keyup)="addDash()" formControlName="expiry" ></ion-input>
+          </ion-item>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validationMessages.expiry">
+              <div class="error-message" *ngIf="validationsForm.get('expiry').hasError(validation.type) && (validationsForm.get('expiry').dirty || validationsForm.get('expiry').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+
+          <ion-item>
+            <ion-label position="floating" color="primary">CVC</ion-label>
+            <ion-input type="text" formControlName="cvc"></ion-input>
+          </ion-item>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validationMessages.cvc">
+              <div class="error-message" *ngIf="validationsForm.get('cvc').hasError(validation.type) && (validationsForm.get('cvc').dirty || validationsForm.get('cvc').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+
+        </ion-list>
+      </ion-card-content>
+      <ion-button class="btn" expand="full" type="submit" [disabled]="!validationsForm.valid">Pay</ion-button>
+    </ion-card>
+  </form>
+</ion-content>

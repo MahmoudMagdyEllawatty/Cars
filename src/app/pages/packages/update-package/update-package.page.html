@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ aPackage.name}} Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ aPackage.name }}</ion-card-title>
+      <ion-card-subtitle> {{ aPackage.price}} KWD</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <p>{{ aPackage.description}}</p>
+        </ion-row>
+        <ion-row>
+          <ion-card>
+            <ion-card-content>
+                <ion-item *ngFor="let item of aPackage.packageServices">
+                  <ion-grid>
+                    <ion-row>
+                      Service Group : {{ item.serviceGroup.name }}
+                    </ion-row>
+
+                    <ion-row>
+                      Amount : {{ item.amount }}
+                    </ion-row>
+
+
+                    <ion-row>
+                      Services :
+                      <p *ngFor="let ser of item.services">
+                        {{ ser.name }}
+                      </p>
+                    </ion-row>
+                  </ion-grid>
+
+                </ion-item>
+
+            </ion-card-content>
+          </ion-card>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

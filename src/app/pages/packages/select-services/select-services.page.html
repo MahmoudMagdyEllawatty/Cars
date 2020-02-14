@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Select Services</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-select multiple="true" [(ngModel)]="selectedServices">
+          <ion-select-option [value]="item" *ngFor="let item of services" >{{ item.name }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Amount:</ion-label>
+        <ion-input type="number" [(ngModel)]="amount"></ion-input>
+      </ion-item>
+    </ion-card-content>
+
+    <ion-button (click)="done()">Done</ion-button>
+    <ion-button (click)="cancel()" color="danger">Cancel</ion-button>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/']">
+        <ion-icon name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Service Groups</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="form" (ngSubmit)="save(form.value)">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Add Service Group</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>
+            <ion-label position="floating">Service Group Name</ion-label>
+            <ion-input type="text" formControlName="name"></ion-input>
+          </ion-item>
+
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validationMessages.name">
+              <div class="error-message" *ngIf="form.get('name').hasError(validation.type) && (form.get('name').dirty || form.get('name').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+              </div>
+            </ng-container>
+          </div>
+
+        </ion-card-content>
+        <ion-button class="btn" expand="full" type="submit" [disabled]="!form.valid">Save</ion-button>
+      </ion-card>
+    </form>
+
+
+  <ion-list>
+    <ion-item *ngFor="let serviceGroup of serviceGroups|async">
+      <p>{{ serviceGroup.name }}</p>
+
+      <ion-button color="primary" slot="end" shape="round" (click)="edit(serviceGroup)">
+          <ion-icon name="create"></ion-icon>
+      </ion-button>
+
+      <ion-button color="danger" slot="end" shape="round" (click)="delete(serviceGroup)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>

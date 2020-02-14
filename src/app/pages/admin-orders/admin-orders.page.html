@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/']">
+        <ion-icon name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Orders</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let order of orders|async">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+           <h1> User : {{ order.user.name }}</h1>
+          </ion-card-title>
+          <ion-card-subtitle>
+            <h2>Address:{{ order.address }}</h2>
+            <h2>Phone:{{ order.phone }}</h2>
+          </ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <h2>Date:{{ order.date }}</h2>
+          <h2>Time:{{ order.time }}</h2>
+
+          <h1>Services :</h1>
+          <ion-item *ngFor="let ser of order.servicePackage">
+            <ion-card>
+              <ion-card-header>{{ ser.serviceGroup.name }}</ion-card-header>
+              <ion-card-content>
+                <ion-item *ngFor="let s of ser.services">
+                  <h3> {{ s.name }}</h3>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ aPackage.name }} Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ aPackage.name}}</ion-card-title>
+      <ion-card-subtitle>{{ aPackage.price}} KWD</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      {{ aPackage.description}}
+    </ion-card-content>
+
+    <ion-button class="btn" color="success" expand="full" [routerLink]="['./order']">Order Now!</ion-button>
+  </ion-card>
+</ion-content>

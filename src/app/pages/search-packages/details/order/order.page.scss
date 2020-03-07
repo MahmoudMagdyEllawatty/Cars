@@ -6,3 +6,35 @@ ion-card{
   width: 100%;
   height: 90%;
 }
+
+.login-bg{
+  --background: #f1c3e2;
+}
+.login{
+  min-width: 200px;
+  --background: #B6D63E;
+  --border-radius: 20px;
+  --box-shadow: B8B4B4;
+}
+
+.login-sec{
+  min-width: 200px;
+  --background: #F09B00;
+  --border-radius: 20px;
+  --box-shadow: B8B4B4;
+}
+
+.login[disabled]{
+  min-width: 200px;
+  --background: #526723;
+  --border-radius: 20px;
+  --box-shadow: B8B4B4;
+}
+
+.list-no{
+  background: transparent !important;
+}
+
+ion-item{
+  --background: transparent !important;
+}

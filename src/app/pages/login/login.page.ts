@@ -47,7 +47,7 @@ export class LoginPage implements OnInit {
                              users.forEach(user => {
                                  if (user.uId === data.user.uid) {
                                      exist = true;
-                                     this.userService.setUser(user);
+                                     this.userService.user = user;
                                      loading.dismiss();
                                      this.router.navigate(['user-dashboard']);
                                      return;

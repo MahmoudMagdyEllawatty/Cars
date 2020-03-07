@@ -4,8 +4,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card>
+<ion-content class="login-bg">
+  <ion-card class="list-no">
     <ion-card-header>
       <ion-card-title>{{ aPackage.name}}</ion-card-title>
       <ion-card-subtitle>{{ aPackage.price}} KWD</ion-card-subtitle>
@@ -14,6 +14,8 @@
       {{ aPackage.description}}
     </ion-card-content>
 
-    <ion-button class="btn" color="success" expand="full" [routerLink]="['./order']">Order Now!</ion-button>
+    <div text-center>
+      <ion-button class="login"  [routerLink]="['./order']">Order Now!</ion-button>
+    </div>
   </ion-card>
 </ion-content>

@@ -4,15 +4,15 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="login-bg">
   <form [formGroup]="formGroup" (ngSubmit)="sumbit(formGroup.value)">
-    <ion-card>
+    <ion-card class="list-no">
       <ion-card-header>
         <ion-card-title>Enter Delivery Details</ion-card-title>
       </ion-card-header>
       
       <ion-card-content>
-        <ion-item>
+        <ion-item lines="none">
           <ion-label position="floating">Phone</ion-label>
           <ion-input type="phone" formControlName="phone"></ion-input>
         </ion-item>
@@ -25,7 +25,7 @@
         </div>
 
 
-        <ion-item>
+        <ion-item lines="none">
           <ion-label position="floating">address</ion-label>
           <ion-input type="text" formControlName="address"></ion-input>
         </ion-item>
@@ -38,7 +38,7 @@
         </div>
 
 
-        <ion-item>
+        <ion-item lines="none">
           <ion-label position="floating">Date</ion-label>
           <ion-datetime displayFormat="YYYY-MM-DD" placeholder="Select Event Date" formControlName="date"></ion-datetime>
         </ion-item>
@@ -51,7 +51,7 @@
         </div>
 
 
-        <ion-item>
+        <ion-item lines="none">
           <ion-label position="floating">Time</ion-label>
           <ion-datetime displayFormat="HH:mm" placeholder="Select Event Time" formControlName="time"></ion-datetime>
         </ion-item>
@@ -64,7 +64,9 @@
         </div>
       </ion-card-content>
 
-      <ion-button class="btn" expand="full" type="submit" [disabled]="!formGroup.valid">Go To Payment</ion-button>
+      <div text-center>
+        <ion-button class="login" type="submit" [disabled]="!formGroup.valid">Go To Payment</ion-button>
+      </div>
     </ion-card>
   </form>
 </ion-content>

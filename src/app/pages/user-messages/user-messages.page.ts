@@ -22,7 +22,7 @@ export class UserMessagesPage implements OnInit {
           this.messages = [];
           data.forEach(item => {
             item.messageUsers.forEach(user => {
-              if (user.userId === this.userService.getUser().id) {
+              if (user.userId === this.userService.user.id) {
                 const messageState: MessageState = {
                   message: item,
                   state: user.state
@@ -37,7 +37,7 @@ export class UserMessagesPage implements OnInit {
   read(msg: MessageState) {
     const message = msg.message;
     message.messageUsers.forEach(data => {
-      if (data.userId === this.userService.getUser().id) {
+      if (data.userId === this.userService.user.id) {
         data.state = 1;
       }
     });

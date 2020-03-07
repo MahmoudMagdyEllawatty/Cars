@@ -14,7 +14,8 @@ export interface User {
   providedIn: 'root'
 })
 export class UserService {
-  private user: User;
+
+  private _user: User;
   private users: Observable<User[]>;
   private userCollection: AngularFirestoreCollection<User>;
   private node = 'users';
@@ -32,12 +33,12 @@ export class UserService {
         );
   }
 
-  setUser(user: User) {
-    this.user = user;
+  get user(): User {
+    return this._user;
   }
 
-  getUser(): User {
-    return this.user;
+  set user(value: User) {
+    this._user = value;
   }
 
   getUsers(): Observable<User[]> {

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Order, OrderService} from '../../../../../services/order.service';
+import {UserService} from '../../../../../services/user.service';
+import {LoadingController, ToastController} from '@ionic/angular';
 
 @Component({
   selector: 'app-payment',
@@ -11,6 +13,8 @@ import {Order, OrderService} from '../../../../../services/order.service';
 export class PaymentPage implements OnInit {
   validationsForm: FormGroup;
   constructor(public formBuilder: FormBuilder,
+              public userService: UserService,
+              private loadingController: LoadingController,
               private orderService: OrderService,
               private router: Router) { }
 
@@ -66,9 +70,14 @@ export class PaymentPage implements OnInit {
     });
   }
 
-  onSubmit(values) {
+  async onSubmit(values) {
+    const loading = await this.loadingController.create({
+      spinner: 'bubbles'
+    });
+    await loading.present();
     console.log(values);
     const order: Order = this.orderService.order;
+    order.user = this.userService.user;
     console.log(order);
     this.orderService.addOrder(order)
         .then(data => {
@@ -76,6 +85,7 @@ export class PaymentPage implements OnInit {
           this.orderService.updateOrder(order)
               .then(d => {
                 console.log(order);
+                loading.dismiss();
                 this.router.navigate(['user-dashboard']);
               });
         });

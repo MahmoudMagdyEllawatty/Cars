@@ -1,29 +1,22 @@
-
-<ion-content>
-  <ion-list>
-    <ion-item>
+<ion-content class="login-bg">
+  <ion-list class="list">
+    <ion-item lines="none">
       <ion-input type="email" placeholder="email" [(ngModel)]="email"></ion-input>
     </ion-item>
 
-    <ion-item>
+    <ion-item  lines="none">
       <ion-input  type="password" placeholder="password" [(ngModel)]="password"></ion-input>
     </ion-item>
 
-    <ion-grid>
-      <ion-row>
-        <ion-button (click)="login()" class="login">
-          Login
+    <div text-center>
+        <ion-button (click)="login()" class="login" >Login
         </ion-button>
+    </div>
 
-      </ion-row>
+    <div text-center>
+      <ion-button fill="clear" class="register" [routerLink]="['/register']">Don't Have An Account? Register
+      </ion-button>
+    </div>
 
-      <ion-row>
-
-        <ion-button fill="clear" [routerLink]="['/register']">
-          Create New Account
-        </ion-button>
-
-      </ion-row>
-    </ion-grid>
   </ion-list>
 </ion-content>

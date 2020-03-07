@@ -4,13 +4,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="login-bg">
   <img src="../../../../../../../../assets/imgs/knet.jpeg" style="width: 100%">
   <form [formGroup]="validationsForm"  (ngSubmit)="onSubmit(validationsForm.value)">
-    <ion-card>
+    <ion-card class="list-no">
       <ion-card-content>
-        <ion-list>
-          <ion-item>
+        <ion-list class="list-no">
+          <ion-item lines="none">
             <ion-label position="floating" color="primary">Bank Name</ion-label>
             <ion-select>
               <ion-select-option>بنك الكويت الوطني | NBK</ion-select-option>
@@ -18,7 +18,7 @@
               <ion-select-option>بيت التمويل الكويتي | KFH</ion-select-option>
             </ion-select>
           </ion-item>
-          <ion-item>
+          <ion-item lines="none">
             <ion-label position="floating" color="primary">Holder Name</ion-label>
             <ion-input type="text" formControlName="cardHolder"></ion-input>
           </ion-item>
@@ -29,7 +29,7 @@
               </div>
             </ng-container>
           </div>
-          <ion-item>
+          <ion-item lines="none">
             <ion-label position="floating" color="primary">Card No</ion-label>
             <ion-input (keypress)="validate($event)" (keyup)="addSpace()" formControlName="cardNo"  ></ion-input>
           </ion-item>
@@ -41,7 +41,7 @@
             </ng-container>
           </div>
 
-          <ion-item>
+          <ion-item lines="none">
             <ion-label position="floating" color="primary">Expiry Month & year</ion-label>
             <ion-input (keypress)="validate($event)" (keyup)="addDash()" formControlName="expiry" ></ion-input>
           </ion-item>
@@ -53,7 +53,7 @@
             </ng-container>
           </div>
 
-          <ion-item>
+          <ion-item lines="none">
             <ion-label position="floating" color="primary">CVC</ion-label>
             <ion-input type="text" formControlName="cvc"></ion-input>
           </ion-item>
@@ -67,7 +67,10 @@
 
         </ion-list>
       </ion-card-content>
-      <ion-button class="btn" expand="full" type="submit" [disabled]="!validationsForm.valid">Pay</ion-button>
+
+      <div text-center>
+        <ion-button class="login" type="submit" [disabled]="!validationsForm.valid">Pay</ion-button>
+      </div>
     </ion-card>
   </form>
 </ion-content>

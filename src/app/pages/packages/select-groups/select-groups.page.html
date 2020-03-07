@@ -4,15 +4,15 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-item *ngFor="let group of groups|async">
+<ion-content class="login-bg">
+  <ion-list class="list-no">
+    <ion-item *ngFor="let group of groups|async" lines="none">
       <ion-grid>
         <ion-row>
           <h1>{{ group.name }}</h1>
         </ion-row>
         <ion-row>
-          <ion-button class="btn" color="success" expand="full"  (click)="openServices(group)">
+          <ion-button class="login-sec"  (click)="openServices(group)">
             Select Services
           </ion-button>
         </ion-row>
@@ -22,5 +22,7 @@
     </ion-item>
   </ion-list>
 
-  <ion-button expand="full"  (click)="done()">Done</ion-button>
+  <div text-center>
+    <ion-button class="login"  (click)="done()">Done</ion-button>
+  </div>
 </ion-content>

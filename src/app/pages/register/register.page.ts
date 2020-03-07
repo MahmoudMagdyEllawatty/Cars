@@ -94,7 +94,7 @@ export class RegisterPage implements OnInit {
                         user.id = u.id;
                         this.userService.updateUser(user)
                             .then(dd => {
-                                this.userService.setUser(user);
+                                this.userService.user = user;
                                 loading.dismiss();
                                 this.router.navigate(['user-dashboard']);
                             });

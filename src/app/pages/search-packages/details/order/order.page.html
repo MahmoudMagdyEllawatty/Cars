@@ -4,10 +4,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="login-bg">
   <ion-slides #testSlider pager="true" [options]="slideOpts" (ionSlideDidChange)="slideChanged($event)" (ionSlideTap)="slideTap($event)">
-    <ion-slide *ngFor="let item of aPackage.packageServices;let i=index">
-      <ion-card>
+    <ion-slide *ngFor="let item of aPackage.packageServices;let i=index" class="list-no">
+      <ion-card class="list-no">
         <ion-card-header>
           <ion-card-title>
             {{ item.serviceGroup.name}}
@@ -18,16 +18,16 @@
         </ion-card-header>
 
         <ion-card-content>
-          <ion-list *ngIf="item.amount > 1">
-            <ion-item *ngFor="let ser of item.services">
+          <ion-list *ngIf="item.amount > 1" class="list-no">
+            <ion-item *ngFor="let ser of item.services" lines="none">
               <ion-label>{{ser.name}}</ion-label>
               <ion-checkbox slot="end" (ionChange)="checkData($event,ser,item.serviceGroup)"></ion-checkbox>
             </ion-item>
           </ion-list>
 
-          <ion-list *ngIf="item.amount == 1">
+          <ion-list *ngIf="item.amount == 1" class="list-no">
             <ion-radio-group [(ngModel)]="services[i]" (ionChange)="data()">
-              <ion-item *ngFor="let ser of item.services;let ii=index">
+              <ion-item *ngFor="let ser of item.services;let ii=index" lines="none">
                 <ion-label>{{ser.name}}</ion-label>
                 <ion-radio slot="end" [value]="ser" checked *ngIf="ii < 1"></ion-radio>
                 <ion-radio slot="end" [value]="ser" *ngIf="ii > 0"></ion-radio>
@@ -38,7 +38,9 @@
 
         </ion-card-content>
 
-        <ion-button class="btn" expand="full" (click)="showData()" *ngIf="(i+1) == aPackage.packageServices.length">Save</ion-button>
+        <div text-center>
+          <ion-button class="login" (click)="showData()" *ngIf="(i+1) == aPackage.packageServices.length">Save</ion-button>
+        </div>
         <h1 *ngIf="(i+1) != aPackage.packageServices.length">Please, Flip to continue your request</h1>
       </ion-card>
     </ion-slide>

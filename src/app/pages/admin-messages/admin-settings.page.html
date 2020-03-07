@@ -9,15 +9,15 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="login-bg">
   <form [formGroup]="form" (ngSubmit)="submit(form.value)">
-    <ion-card>
+    <ion-card class="list-no">
       <ion-card-header>
         <ion-card-title>
           Enter Message Text To send
         </ion-card-title>
         <ion-card-content>
-          <ion-item>
+          <ion-item lines="none">
             <ion-input type="text" placeholder="Message Text" formControlName="text"></ion-input>
           </ion-item>
           <div class="validation-errors">
@@ -29,12 +29,14 @@
           </div>
         </ion-card-content>
       </ion-card-header>
-      <ion-button class="btn" expand="full" type="submit" [disabled]="!form.valid">Send</ion-button>
+      <div text-center>
+        <ion-button class="login"  type="submit" [disabled]="!form.valid">Send</ion-button>
+      </div>
     </ion-card>
   </form>
 
-  <ion-list>
-    <ion-item *ngFor="let msg of messages|async">
+  <ion-list class="list-no">
+    <ion-item *ngFor="let msg of messages|async" lines="none">
       <h2>{{ msg.message }}</h2>
     </ion-item>
   </ion-list>

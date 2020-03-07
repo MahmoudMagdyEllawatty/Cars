@@ -20,7 +20,7 @@ export class UserDashboardPage implements OnInit {
             this.unreadCount = 0;
             data.forEach(item => {
             item.messageUsers.forEach(user => {
-              if (user.userId === this.userService.getUser().id && user.state === 0) {
+              if (user.userId === this.userService.user.id && user.state === 0) {
                 this.unreadCount += 1;
               }
             });

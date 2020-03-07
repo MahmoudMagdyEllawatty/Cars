@@ -9,16 +9,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <form [formGroup]="form" (ngSubmit)="submit(form.value)">
-    <ion-card>
+<ion-content class="login-bg">
+  <form [formGroup]="form" (ngSubmit)="submit(form.value)" class="list-no">
+    <ion-card class="list-no">
       <ion-card-header>
         <ion-card-title>Enter Service Data</ion-card-title>
       </ion-card-header>
 
       <ion-card-content>
 
-        <ion-item>
+        <ion-item class="list-no" lines="none">
           <ion-label position="floating">Name</ion-label>
           <ion-input type="text" formControlName="name"></ion-input>
         </ion-item>
@@ -30,7 +30,7 @@
           </ng-container>
         </div>
 
-        <ion-item>
+        <ion-item class="list-no" lines="none">
           <ion-label position="floating">Description</ion-label>
           <ion-input type="text" formControlName="description"></ion-input>
         </ion-item>
@@ -42,7 +42,7 @@
           </ng-container>
         </div>
 
-        <ion-item>
+        <ion-item class="list-no" lines="none">
           <ion-label position="floating">Price</ion-label>
           <ion-input type="number" formControlName="price"></ion-input>
         </ion-item>
@@ -54,7 +54,7 @@
           </ng-container>
         </div>
 
-        <ion-item>
+        <ion-item class="list-no" lines="none">
           <ion-label>Service Group</ion-label>
           <ion-select formControlName="serviceGroup">
             <ion-select-option *ngFor="let group of serviceGroups" value="{{group.id}}">{{ group.name }}</ion-select-option>
@@ -63,13 +63,16 @@
 
       </ion-card-content>
 
-      <ion-button class="btn" expand="full" type="submit" [disabled]="!form.valid">Save</ion-button>
+
+      <div text-center>
+        <ion-button class="login" type="submit" [disabled]="!form.valid">Save</ion-button>
+      </div>
     </ion-card>
   </form>
 
 
-  <ion-list>
-    <ion-item *ngFor="let service of services|async">
+  <ion-list  class="list-no">
+    <ion-item *ngFor="let service of services|async" lines="none">
       <p>{{ service.name }}</p>
 
       <ion-button color="primary" slot="end" shape="round" (click)="edit(service)">

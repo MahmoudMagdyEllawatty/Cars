@@ -1,15 +1,9 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>User Registration</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content padding class="form-content">
-  <form [formGroup]="validationsForm"  (ngSubmit)="register(validationsForm.value)">
-    <ion-card>
+<ion-content padding class="login-bg form-content">
+  <form [formGroup]="validationsForm" class="list"  (ngSubmit)="register(validationsForm.value)">
+    <ion-card class="list-no">
       <ion-card-content>
-        <ion-list>
-          <ion-item>
+        <ion-list class="list-no">
+          <ion-item lines="none">
             <ion-label position="floating" color="primary">Username</ion-label>
             <ion-input type="text" formControlName="username"></ion-input>
           </ion-item>
@@ -21,7 +15,7 @@
             </ng-container>
           </div>
 
-          <ion-item>
+          <ion-item lines="none">
             <ion-label position="floating" color="primary">Email</ion-label>
             <ion-input type="text" formControlName="email"></ion-input>
           </ion-item>
@@ -34,7 +28,7 @@
           </div>
 
           <div formGroupName="matching_passwords">
-            <ion-item>
+            <ion-item lines="none">
               <ion-label position="floating" color="primary">Password</ion-label>
               <ion-input type="password" formControlName="password"></ion-input>
             </ion-item>
@@ -46,7 +40,7 @@
               </ng-container>
             </div>
 
-            <ion-item>
+            <ion-item lines="none">
               <ion-label position="floating" color="primary">Confirm Password</ion-label>
               <ion-input type="password" formControlName="confirm_password"></ion-input>
             </ion-item>
@@ -69,7 +63,11 @@
 
         </ion-list>
       </ion-card-content>
-      <ion-button class="btn" expand="full" type="submit" [disabled]="!validationsForm.valid">Create Account</ion-button>
+
+      <div text-center>
+        <ion-button class="login"  type="submit" [disabled]="!validationsForm.valid">Create Account</ion-button>
+      </div>
+
     </ion-card>
   </form>
 </ion-content>

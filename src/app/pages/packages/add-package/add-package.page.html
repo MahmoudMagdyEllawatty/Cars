@@ -7,14 +7,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <form [formGroup]="form" (ngSubmit)="submit(form.value)">
-    <ion-card>
+<ion-content class="login-bg">
+  <form [formGroup]="form" (ngSubmit)="submit(form.value)" class="list-no">
+    <ion-card class="list-no">
       <ion-card-header>
         Enter Package Data
       </ion-card-header>
       <ion-card-content>
-        <ion-item>
+        <ion-item lines="none">
           <ion-label position="floating">Name</ion-label>
           <ion-input type="text" formControlName="name"></ion-input>
         </ion-item>
@@ -27,7 +27,7 @@
         </div>
 
 
-        <ion-item>
+        <ion-item lines="none">
           <ion-label position="floating">Description</ion-label>
           <ion-input type="text" formControlName="description"></ion-input>
         </ion-item>
@@ -40,7 +40,7 @@
         </div>
 
 
-        <ion-item>
+        <ion-item lines="none">
           <ion-label position="floating">Price</ion-label>
           <ion-input type="number" formControlName="price"></ion-input>
         </ion-item>
@@ -53,12 +53,16 @@
         </div>
 
 
-        <ion-item>
-          <ion-button (click)="selectPackageServices()">Select Package Services</ion-button>
-        </ion-item>
+            <div text-center>
+              <ion-button (click)="selectPackageServices()" class="login-sec" [disabled]="!form.valid">Select Package Services</ion-button>
+            </div>
+
       </ion-card-content>
 
-      <ion-button class="btn" expand="full" type="submit" [disabled]="!form.valid">Save</ion-button>
+      <div text-center>
+        <ion-button class="login" type="submit" [disabled]="!form.valid">Save</ion-button>
+      </div>
+
     </ion-card>
   </form>
 </ion-content>

@@ -18,7 +18,7 @@ export class UserOrdersPage implements OnInit {
         .subscribe(data => {
           this.orders = [];
           data.forEach(item => {
-            if (item.user.id === this.userService.getUser().id) {
+            if (item.user.id === this.userService.user.id) {
               this.orders.push(item);
             }
           });

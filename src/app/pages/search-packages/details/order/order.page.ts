@@ -152,7 +152,7 @@ export class OrderPage implements OnInit {
       servicePackage: this.packageServices,
       state: 0,
       time: '',
-      user: this.userService.getUser()
+      user: this.userService.user
     };
     console.log(this.packageServices);
     this.orderService.order = order;

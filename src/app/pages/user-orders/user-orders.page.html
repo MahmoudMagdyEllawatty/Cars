@@ -9,10 +9,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-item *ngFor="let order of orders">
-      <ion-card>
+<ion-content class="login-bg">
+  <ion-list class="list-no">
+    <ion-item *ngFor="let order of orders" lines="none">
+      <ion-card class="list-no">
         <ion-card-header>
           <ion-card-title>
             Address:{{ order.address }}
@@ -27,11 +27,11 @@
           <h2>Time:{{ order.time }}</h2>
 
           <h1>Services :</h1>
-          <ion-item *ngFor="let ser of order.servicePackage">
-              <ion-card>
+          <ion-item *ngFor="let ser of order.servicePackage" lines="none">
+              <ion-card class="list-no">
                 <ion-card-header>{{ ser.serviceGroup.name }}</ion-card-header>
                 <ion-card-content>
-                  <ion-item *ngFor="let s of ser.services">
+                  <ion-item *ngFor="let s of ser.services" lines="none">
                       <h3> {{ s.name }}</h3>
                   </ion-item>
                 </ion-card-content>

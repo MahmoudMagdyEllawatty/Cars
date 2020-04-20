@@ -3,13 +3,14 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ aPackage.name}} Details</ion-title>
+    <ion-title>{{ aPackage.name}} {{ 'Packages.Details' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-card>
     <ion-card-header>
+      <img src="{{aPackage.image}}" alt="{{aPackage.name}}" width="100%" height="190px">
       <ion-card-title>{{ aPackage.name }}</ion-card-title>
       <ion-card-subtitle> {{ aPackage.price}} KWD</ion-card-subtitle>
     </ion-card-header>
@@ -25,19 +26,20 @@
                 <ion-item *ngFor="let item of aPackage.packageServices">
                   <ion-grid>
                     <ion-row>
-                      Service Group : {{ item.serviceGroup.name }}
+                      {{ 'Packages.Groups' | translate }} : {{ item.serviceGroup.name }}
                     </ion-row>
 
                     <ion-row>
-                      Amount : {{ item.amount }}
+                      {{ 'Packages.Amount' | translate }} : {{ item.amount }}
                     </ion-row>
 
 
                     <ion-row>
-                      Services :
-                      <p *ngFor="let ser of item.services">
-                        {{ ser.name }}
-                      </p>
+                      <h5 style="width: 100%">{{ 'Packages.Service' | translate }} :</h5>
+                      <div text-center style="width: 100%" *ngFor="let ser of item.services">
+                        <img src="{{ser.file}}" alt="{{ser.name}}" style="width: 50px !important;height: 50px !important;">
+                        <p style="margin-left: 10px;">{{ ser.name }}</p>
+                      </div>
                     </ion-row>
                   </ion-grid>
 

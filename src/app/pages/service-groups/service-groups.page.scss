@@ -1,5 +1,7 @@
 .login-bg{
-  --background: #f1c3e2;
+  min-width: 100%;
+  min-height: 100%;
+  --background: url('../../../assets/imgs/app.jpg') 0 0/100% 100% no-repeat transparent;
 }
 .login{
   min-width: 200px;

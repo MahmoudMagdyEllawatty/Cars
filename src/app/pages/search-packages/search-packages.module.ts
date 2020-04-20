@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { SearchPackagesPageRoutingModule } from './search-packages-routing.module';
 
 import { SearchPackagesPage } from './search-packages.page';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SearchPackagesPageRoutingModule
+    SearchPackagesPageRoutingModule,
+      TranslateModule
   ],
   declarations: [SearchPackagesPage]
 })

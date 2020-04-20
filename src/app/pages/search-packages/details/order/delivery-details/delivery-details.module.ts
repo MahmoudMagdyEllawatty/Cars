@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { DeliveryDetailsPageRoutingModule } from './delivery-details-routing.module';
 
 import { DeliveryDetailsPage } from './delivery-details.page';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
     imports: [
@@ -14,7 +15,8 @@ import { DeliveryDetailsPage } from './delivery-details.page';
         FormsModule,
         IonicModule,
         DeliveryDetailsPageRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        TranslateModule
     ],
   declarations: [DeliveryDetailsPage]
 })

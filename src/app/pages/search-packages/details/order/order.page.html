@@ -1,33 +1,35 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Order {{ aPackage.name}}</ion-title>
+    <ion-title>{{ 'Packages.Order' | translate }} {{ aPackage.name}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="login-bg">
-  <ion-slides #testSlider pager="true" [options]="slideOpts" (ionSlideDidChange)="slideChanged($event)" (ionSlideTap)="slideTap($event)">
-    <ion-slide *ngFor="let item of aPackage.packageServices;let i=index" class="list-no">
+<!--  <ion-slides #testSlider pager="true" [options]="slideOpts" (ionSlideDidChange)="slideChanged($event)" (ionSlideTap)="slideTap($event)">-->
+<!--    <ion-list *ngFor="let PackageService of aPackage.packageServices;let i=index" class="list-no">-->
       <ion-card class="list-no">
         <ion-card-header>
           <ion-card-title>
-            {{ item.serviceGroup.name}}
+            Decor
           </ion-card-title>
           <ion-card-subtitle>
-            Select {{ item.amount }} of Services
+            {{ 'Packages.Select' | translate }} {{ PackageService.amount }} {{ 'Packages.Services' | translate }}
           </ion-card-subtitle>
         </ion-card-header>
 
         <ion-card-content>
-          <ion-list *ngIf="item.amount > 1" class="list-no">
-            <ion-item *ngFor="let ser of item.services" lines="none">
-              <ion-label>{{ser.name}}</ion-label>
-              <ion-checkbox slot="end" (ionChange)="checkData($event,ser,item.serviceGroup)"></ion-checkbox>
+          <ion-list *ngIf="PackageService.amount > 1" class="list-no">
+            <ion-item *ngFor="let ser of PackageService.services" lines="none" style="margin-bottom: 10px">
+              <img src="{{ser.file}}" alt="{{ser.name}}" width="50px" height="50px" style="width: 50px;height: 50px">
+              <ion-label> {{ser.name}}</ion-label>
+              <ion-checkbox slot="end" (ionChange)="checkData($event,ser,PackageService.serviceGroup)"></ion-checkbox>
             </ion-item>
           </ion-list>
 
-          <ion-list *ngIf="item.amount == 1" class="list-no">
-            <ion-radio-group [(ngModel)]="services[i]" (ionChange)="data()">
-              <ion-item *ngFor="let ser of item.services;let ii=index" lines="none">
+          <ion-list *ngIf="PackageService.amount == 1" class="list-no">
+            <ion-radio-group [(ngModel)]="services[0]" (ionChange)="data()">
+              <ion-item *ngFor="let ser of PackageService.services;let ii=index" lines="none"  style="margin-bottom: 10px">
+                <img src="{{ser.file}}" alt="{{ser.name}}" width="50px" height="50px" style="width: 50px;height: 50px">
                 <ion-label>{{ser.name}}</ion-label>
                 <ion-radio slot="end" [value]="ser" checked *ngIf="ii < 1"></ion-radio>
                 <ion-radio slot="end" [value]="ser" *ngIf="ii > 0"></ion-radio>
@@ -38,11 +40,17 @@
 
         </ion-card-content>
 
+
         <div text-center>
-          <ion-button class="login" (click)="showData()" *ngIf="(i+1) == aPackage.packageServices.length">Save</ion-button>
+          <p> 1 of 4 </p>
         </div>
-        <h1 *ngIf="(i+1) != aPackage.packageServices.length">Please, Flip to continue your request</h1>
+
+        <div text-center>
+            <ion-button class="login-sec"  (click)="backData(0)">{{ 'Actions.Back' | translate }}</ion-button>
+            <ion-button class="login"  (click)="showData(0)">{{ 'Actions.Next' | translate }}</ion-button>
+        </div>
+
       </ion-card>
-    </ion-slide>
-  </ion-slides>
+<!--    </ion-list>-->
+<!--  </ion-slides>-->
 </ion-content>

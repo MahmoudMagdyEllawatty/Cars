@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {ServiceGroup, ServiceGroupService} from '../../services/service-group.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {AlertController, LoadingController, ToastController} from '@ionic/angular';
+import {AlertController, LoadingController, PopoverController, ToastController} from '@ionic/angular';
+import {LanguagePopoverPage} from '../language-popover/language-popover.page';
 
 @Component({
   selector: 'app-service-groups',
@@ -15,7 +16,10 @@ export class ServiceGroupsPage implements OnInit {
               private loadingCtrl: LoadingController,
               private alertCtrl: AlertController,
               private toastCtrl: ToastController,
+              private popCtrl: PopoverController,
               private builder: FormBuilder) { }
+
+
   serviceGroups: Observable<ServiceGroup[]>;
   form: FormGroup;
   id: string;
@@ -33,6 +37,14 @@ export class ServiceGroupsPage implements OnInit {
     this.initForm('');
     this.id = '';
   }
+
+    async openLanguagePopover(evt) {
+        const popover = await this.popCtrl.create({
+            component: LanguagePopoverPage,
+            event: evt
+        });
+        await popover.present();
+    }
 
   initForm(value: string) {
     this.form = this.builder.group({

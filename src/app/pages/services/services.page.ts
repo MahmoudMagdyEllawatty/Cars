@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Observable} from 'rxjs';
-import {Service, ServiceService} from '../../services/service.service';
+import {Files, Service, ServiceService} from '../../services/service.service';
 import {ServiceGroup, ServiceGroupService} from '../../services/service-group.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {AlertController, LoadingController, ToastController} from '@ionic/angular';
+import {AlertController, LoadingController, PopoverController, ToastController} from '@ionic/angular';
+import {LanguagePopoverPage} from '../language-popover/language-popover.page';
+import {FileService} from '../../services/file.service';
 
 @Component({
   selector: 'app-services',
@@ -11,7 +13,9 @@ import {AlertController, LoadingController, ToastController} from '@ionic/angula
   styleUrls: ['./services.page.scss'],
 })
 export class ServicesPage implements OnInit {
-
+    @ViewChild('filechooser', {static: false}) fileChooser: ElementRef;
+    blob: Blob = null;
+    imageURL = '';
   services: Observable<Service[]>;
   serviceGroups: ServiceGroup[];
 
@@ -43,8 +47,65 @@ export class ServicesPage implements OnInit {
               private loadingCtrl: LoadingController,
               private toastCtrl: ToastController,
               private alertCtrl: AlertController,
+              private popCtrl: PopoverController,
+              private fileService: FileService,
               private serviceGroupService: ServiceGroupService) { }
 
+    selectPhoto($evt) {
+        const uri = $evt.target.files as File;
+        const fileName1 = this.fileService.getFileName(uri[0].name);
+        const fileExt = this.fileService.getFileExtenstion(uri[0].name);
+        if (fileExt === 'jpeg') {
+            const file: Files = {
+                blob: uri[0],
+                fileExtention: 'images/jpeg',
+                fileName: fileName1,
+                type: fileExt
+            }; // new Files(uri[0], 'images/jpeg', fileExt, fileName);
+            this.upload(file);
+        } else if (fileExt === 'jpg') {
+            const file: Files = {
+                blob: uri[0],
+                fileExtention: 'images/jpg',
+                fileName: fileName1,
+                type: fileExt
+            };
+            this.upload(file);
+        } else if (fileExt === 'png') {
+            const file: Files = {
+                blob: uri[0],
+                fileExtention: 'images/png',
+                fileName: fileName1,
+                type: fileExt
+            };
+            this.upload(file);
+        } else {
+            alert('select valid image');
+        }
+    }
+
+    async upload(file: Files) {
+        const loading = await this.loadingCtrl.create({
+            spinner: 'bubbles'
+        });
+        await loading.present();
+        this.serviceService.uploadFile(file, file.fileName)
+            .then(data => {
+                this.serviceService.getDownloadLink(data)
+                    .then(() => {
+                        console.log(this.serviceService.fileDownloadLink);
+                        this.imageURL = this.serviceService.fileDownloadLink;
+                        loading.dismiss();
+                    });
+            });
+    }
+    async openLanguagePopover(evt) {
+        const popover = await this.popCtrl.create({
+            component: LanguagePopoverPage,
+            event: evt
+        });
+        await popover.present();
+    }
   ngOnInit() {
     this.services = this.serviceService.getServices();
     this.serviceGroupService.getServiceGroups()
@@ -91,6 +152,8 @@ export class ServicesPage implements OnInit {
 
   edit(service: Service) {
     this.id = service.id;
+    this.imageURL = service.file;
+    console.log(service);
     this.initForm(service.name, service.description, service.price, service.serviceGroup);
   }
 
@@ -132,7 +195,8 @@ export class ServicesPage implements OnInit {
       name: value.name,
       description: value.description,
       serviceGroup: value.serviceGroup,
-      price: value.price
+      price: value.price,
+        file: this.imageURL
     };
 
     if (this.id === '') {
@@ -147,6 +211,7 @@ export class ServicesPage implements OnInit {
                     name: ''
                   };
                   this.initForm('', '', 1, group.id);
+                    this.imageURL = '';
                   loading.dismiss();
                   this.showToast('Service Saved');
                 });
@@ -160,6 +225,7 @@ export class ServicesPage implements OnInit {
               name: ''
             };
             this.initForm('', '', 1, group.id);
+            this.imageURL = '';
             loading.dismiss();
             this.showToast('Service Updated');
           });

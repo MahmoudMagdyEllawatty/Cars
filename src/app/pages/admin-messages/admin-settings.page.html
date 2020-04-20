@@ -5,7 +5,7 @@
         <ion-icon name="log-out"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Message Center</ion-title>
+    <ion-title>{{ 'Messages.Title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,12 +13,12 @@
   <form [formGroup]="form" (ngSubmit)="submit(form.value)">
     <ion-card class="list-no">
       <ion-card-header>
-        <ion-card-title>
-          Enter Message Text To send
+        <ion-card-title style="color: white">
+          {{ 'Messages.Msg' | translate }}
         </ion-card-title>
         <ion-card-content>
           <ion-item lines="none">
-            <ion-input type="text" placeholder="Message Text" formControlName="text"></ion-input>
+            <ion-input type="text" style="color: white;" placeholder="{{ 'Messages.Msg' | translate }}" formControlName="text"></ion-input>
           </ion-item>
           <div class="validation-errors">
             <ng-container *ngFor="let validation of validationMessages.text">
@@ -30,14 +30,14 @@
         </ion-card-content>
       </ion-card-header>
       <div text-center>
-        <ion-button class="login"  type="submit" [disabled]="!form.valid">Send</ion-button>
+        <ion-button class="login"  type="submit" [disabled]="!form.valid">{{ 'Actions.Send' | translate }}</ion-button>
       </div>
     </ion-card>
   </form>
 
   <ion-list class="list-no">
     <ion-item *ngFor="let msg of messages|async" lines="none">
-      <h2>{{ msg.message }}</h2>
+      <h2 style="color: white">{{ msg.message }}</h2>
     </ion-item>
   </ion-list>
 </ion-content>

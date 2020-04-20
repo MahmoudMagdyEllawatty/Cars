@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { SelectGroupsPageRoutingModule } from './select-groups-routing.module';
 
 import { SelectGroupsPage } from './select-groups.page';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SelectGroupsPageRoutingModule
+    SelectGroupsPageRoutingModule,
+      TranslateModule
   ],
   declarations: [SelectGroupsPage]
 })

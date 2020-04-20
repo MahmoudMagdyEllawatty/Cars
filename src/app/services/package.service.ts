@@ -1,22 +1,25 @@
 import { Injectable } from '@angular/core';
 import {ServiceGroup} from './service-group.service';
-import {Service} from './service.service';
+import {Files, Service} from './service.service';
 import {Observable} from 'rxjs';
 import {AngularFirestore, AngularFirestoreCollection, DocumentReference} from '@angular/fire/firestore';
 import {map, take} from 'rxjs/operators';
+import * as firebase from 'firebase';
+import {Order} from './order.service';
 
 export interface PackageServices {
   serviceGroup: ServiceGroup;
   services: Service[];
   amount: number;
 }
-
 export interface Package {
   id: string;
   name: string;
   description: string;
   price: number;
   state: number; // 1 => available , 0 => not available
+  persons: number;
+  image: string;
   packageServices: PackageServices[];
 }
 
@@ -25,6 +28,9 @@ export interface Package {
   providedIn: 'root'
 })
 export class PackageService {
+  private _package: Package;
+  private basePath = '/packageUploads';
+  public fileDownloadLink = '';
   private packages: Observable<Package[]>;
   private packageCollection: AngularFirestoreCollection<Package>;
   private node = 'packages';
@@ -42,8 +48,26 @@ export class PackageService {
         );
   }
 
+
+  get package(): Package {
+    return this._package;
+  }
+
+  set package(value: Package) {
+    this._package = value;
+  }
+
   getPackages(): Observable<Package[]> {
-    return this.packages;
+    return this.packageCollection.snapshotChanges()
+        .pipe(
+            map(actions => {
+              return actions.map(a => {
+                const data = a.payload.doc.data();
+                const id = a.payload.doc.id;
+                return { id, ...data };
+              });
+            })
+        );
   }
 
   getPackageById(id: string): Observable<Package> {
@@ -69,5 +93,16 @@ export class PackageService {
   }
 
 
+  uploadFile(file: Files, nurseName: string) {
+    const storageRef = firebase.storage().ref();
+    return storageRef.child(`${this.basePath}/${nurseName}/${file.fileName}`)
+        .put(file.blob, {contentType: file.type});
+  }
+  getDownloadLink(savedFile) {
+    return  savedFile.ref.getDownloadURL().then(downloadURL => {
+      this.fileDownloadLink = downloadURL;
+      console.log('rr' + this.fileDownloadLink);
+    });
+  }
 
 }

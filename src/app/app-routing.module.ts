@@ -53,6 +53,26 @@ const routes: Routes = [
   {
     path: 'user-messages',
     loadChildren: () => import('./pages/user-messages/user-messages.module').then( m => m.UserMessagesPageModule)
+  },
+  {
+    path: 'language-popover',
+    loadChildren: () => import('./pages/language-popover/language-popover.module').then( m => m.LanguagePopoverPageModule)
+  },
+  {
+    path: 'terms',
+    loadChildren: () => import('./pages/terms/terms.module').then( m => m.TermsPageModule)
+  },
+  {
+    path: 'step2',
+    loadChildren: () => import('./pages/search-packages/details/order/step2/step2.module').then(m => m.Step2PageModule)
+  },
+  {
+    path: 'step3',
+    loadChildren: () => import('./pages/search-packages/details/order/step3/step3.module').then(m => m.Step3PageModule)
+  },
+  {
+    path: 'step4',
+    loadChildren: () => import('./pages/search-packages/details/order/step4/step4.module').then(m => m.Step4PageModule)
   }
 ];
 @NgModule({

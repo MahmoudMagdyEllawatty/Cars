@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ 'Terms.Title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content text-start style="padding-top: 20px !important;" class="login-bg">
+  <ion-label style="margin-top: 60px !important;">{{ 'Terms.Data' | translate}}</ion-label>
+
+  <div text-center>
+    <ion-button (click)="accept()" class="login" >{{ 'Terms.Accept' | translate }}
+    </ion-button>
+  </div>
+
+  <div text-center>
+    <ion-button (click)="reject()" class="reject" >{{ 'Terms.Reject' | translate }}
+    </ion-button>
+  </div>
+</ion-content>

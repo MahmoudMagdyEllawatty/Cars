@@ -32,6 +32,7 @@
                 <ion-card-header>{{ ser.serviceGroup.name }}</ion-card-header>
                 <ion-card-content>
                   <ion-item *ngFor="let s of ser.services" lines="none">
+                    <img src="{{s.file}}" alt="{{s.name}}" width="50px" height="50px" style="width: 50px;height: 50px">
                       <h3> {{ s.name }}</h3>
                   </ion-item>
                 </ion-card-content>

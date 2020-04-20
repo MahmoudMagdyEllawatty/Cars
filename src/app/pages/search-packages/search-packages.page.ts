@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Package, PackageService} from '../../services/package.service';
+import {LanguagePopoverPage} from '../language-popover/language-popover.page';
+import {PopoverController} from '@ionic/angular';
 
 @Component({
   selector: 'app-search-packages',
@@ -9,7 +11,8 @@ import {Package, PackageService} from '../../services/package.service';
 export class SearchPackagesPage implements OnInit {
   packages: Package[];
   allPackages: Package[];
-  constructor(private packageService: PackageService) { }
+  constructor(private packageService: PackageService,
+              private popCtrl: PopoverController) { }
 
   ngOnInit() {
     this.packageService.getPackages()
@@ -17,6 +20,7 @@ export class SearchPackagesPage implements OnInit {
           this.packages = [];
           this.allPackages = [];
 
+          console.log(data);
           data.forEach(item => {
             this.packages.push(item);
             this.allPackages.push(item);
@@ -38,5 +42,13 @@ export class SearchPackagesPage implements OnInit {
       }
     });
 
+  }
+
+  async openLanguagePopover(evt) {
+    const popover = await this.popCtrl.create({
+      component: LanguagePopoverPage,
+      event: evt
+    });
+    await popover.present();
   }
 }

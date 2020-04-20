@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { UserDashboardPageRoutingModule } from './user-dashboard-routing.module';
 
 import { UserDashboardPage } from './user-dashboard.page';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    UserDashboardPageRoutingModule
+    UserDashboardPageRoutingModule,
+      TranslateModule
   ],
   declarations: [UserDashboardPage]
 })

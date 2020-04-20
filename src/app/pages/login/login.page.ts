@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../services/user.service';
 import {AuthService} from '../../services/auth.service';
-import {LoadingController, ToastController} from '@ionic/angular';
+import {LoadingController, PopoverController, ToastController} from '@ionic/angular';
 import {Router} from '@angular/router';
+import {TranslateConfigService} from '../../services/translate-config.service';
+import {LanguagePopoverPage} from '../language-popover/language-popover.page';
 
 @Component({
   selector: 'app-login',
@@ -17,9 +19,22 @@ export class LoginPage implements OnInit {
               private router: Router,
               private toastCtrl: ToastController,
               private loadingController: LoadingController,
-              private auth: AuthService) { }
+              private popCtrl: PopoverController,
+              private translateConfigService: TranslateConfigService,
+              private auth: AuthService) {
 
+  }
+
+    async openLanguagePopover(evt) {
+        const popover = await this.popCtrl.create({
+            component: LanguagePopoverPage,
+            event: evt
+        });
+        await popover.present();
+    }
   ngOnInit() {
+      console.log(this.translateConfigService.selected);
+      console.log('dd');
         this.email = '';
         this.password = '';
   }

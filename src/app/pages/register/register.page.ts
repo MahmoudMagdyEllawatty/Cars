@@ -86,7 +86,8 @@ export class RegisterPage implements OnInit {
                 const user: User = {
                     id: data2,
                     name: this.name,
-                    uId: data.user.uid
+                    uId: data.user.uid,
+                    state: 0
                 };
 
                 this.userService.addUser(user)

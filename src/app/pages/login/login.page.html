@@ -1,20 +1,31 @@
 <ion-content class="login-bg">
+  <div text-center>
+    <img src="../../../assets/imgs/logo.png" alt="logo" style="margin-top: 20px">
+  </div>
+
   <ion-list class="list">
     <ion-item lines="none">
-      <ion-input type="email" placeholder="email" [(ngModel)]="email"></ion-input>
+      <div text-center>
+        <ion-input type="email" placeholder="{{ 'Login.email' | translate }}" [(ngModel)]="email"></ion-input>
+      </div>
+
     </ion-item>
 
-    <ion-item  lines="none">
-      <ion-input  type="password" placeholder="password" [(ngModel)]="password"></ion-input>
+    <ion-item  lines="none" text-center>
+      <div text-center>
+        <ion-input  type="password" placeholder="{{ 'Login.password' | translate }}" [(ngModel)]="password"></ion-input>
+      </div>
+
     </ion-item>
 
     <div text-center>
-        <ion-button (click)="login()" class="login" >Login
+        <ion-button (click)="login()" class="login" >{{ 'Login.login' | translate }}
         </ion-button>
     </div>
 
     <div text-center>
-      <ion-button fill="clear" class="register" [routerLink]="['/register']">Don't Have An Account? Register
+      <ion-button class="register" [routerLink]="['/register']">
+        {{ 'Login.account' | translate }}
       </ion-button>
     </div>
 

@@ -1,28 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Select Service Groups</ion-title>
+    <ion-title>{{ 'Packages.Groups' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="login-bg">
   <ion-list class="list-no">
     <ion-item *ngFor="let group of groups|async" lines="none">
-      <ion-grid>
-        <ion-row>
-          <h1>{{ group.name }}</h1>
-        </ion-row>
-        <ion-row>
-          <ion-button class="login-sec"  (click)="openServices(group)">
-            Select Services
+          <h3>{{ group.name }}</h3>
+          <ion-button class="login-sec" slot="end"  (click)="openServices(group)">
+            {{ 'Packages.Services' | translate }}
           </ion-button>
-        </ion-row>
-      </ion-grid>
-
-
     </ion-item>
-  </ion-list>
 
+  </ion-list>
   <div text-center>
-    <ion-button class="login"  (click)="done()">Done</ion-button>
+    <ion-button class="login"  (click)="done()">{{ 'Packages.Done' | translate }}</ion-button>
   </div>
+
 </ion-content>
+<ion-footer>
+
+</ion-footer>

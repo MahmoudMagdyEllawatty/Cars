@@ -5,7 +5,7 @@
         <ion-icon name="log-out"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Orders</ion-title>
+    <ion-title>{{ 'Orders.Title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,24 +15,25 @@
       <ion-card class="list-no">
         <ion-card-header>
           <ion-card-title>
-           <h1> User : {{ order.user.name }}</h1>
+           <h1> {{ 'Orders.User' | translate }} : {{ order.user.name }}</h1>
           </ion-card-title>
           <ion-card-subtitle>
-            <h2>Address:{{ order.address }}</h2>
-            <h2>Phone:{{ order.phone }}</h2>
+            <h2>{{ 'Orders.Address' | translate }}:{{ order.address }}</h2>
+            <h2>{{ 'Orders.Phone' | translate }}:{{ order.phone }}</h2>
           </ion-card-subtitle>
         </ion-card-header>
 
         <ion-card-content>
-          <h2>Date:{{ order.date }}</h2>
-          <h2>Time:{{ order.time }}</h2>
+          <h2>{{ 'Orders.Date' | translate }}:{{ order.date }}</h2>
+          <h2>{{ 'Orders.Time' | translate }}:{{ order.time }}</h2>
 
-          <h1>Services :</h1>
+          <h1>{{ 'Orders.Services' | translate }} :</h1>
           <ion-item *ngFor="let ser of order.servicePackage">
             <ion-card>
               <ion-card-header>{{ ser.serviceGroup.name }}</ion-card-header>
               <ion-card-content>
                 <ion-item *ngFor="let s of ser.services">
+                  <img src="{{s.file}}" alt="{{s.name}}" width="50px" height="50px" style="width: 50px;height: 50px">
                   <h3> {{ s.name }}</h3>
                 </ion-item>
               </ion-card-content>

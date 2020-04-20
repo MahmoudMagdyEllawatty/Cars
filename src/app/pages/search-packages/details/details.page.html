@@ -1,21 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{ aPackage.name }} Details</ion-title>
+    <ion-title>{{ aPackage.name }} {{ 'Packages.Details' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="login-bg">
   <ion-card class="list-no">
+    <img src="{{aPackage.image}}" alt="{{aPackage.name}}" width="100%" height="200px">
     <ion-card-header>
       <ion-card-title>{{ aPackage.name}}</ion-card-title>
-      <ion-card-subtitle>{{ aPackage.price}} KWD</ion-card-subtitle>
+      <ion-card-title>{{ 'Packages.Persons' | translate }}:{{ aPackage.persons}}</ion-card-title>
+      <ion-card-subtitle>{{ 'Packages.Price' | translate }}:{{ aPackage.price}}</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
       {{ aPackage.description}}
     </ion-card-content>
 
     <div text-center>
-      <ion-button class="login"  [routerLink]="['./order']">Order Now!</ion-button>
+      <ion-button class="login"  [routerLink]="['./order']">{{ 'Packages.Order' | translate }}</ion-button>
     </div>
   </ion-card>
 </ion-content>

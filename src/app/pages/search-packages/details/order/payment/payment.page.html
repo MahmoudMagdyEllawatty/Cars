@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Payment</ion-title>
+    <ion-title>{{ 'Packages.Payment' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,7 +11,7 @@
       <ion-card-content>
         <ion-list class="list-no">
           <ion-item lines="none">
-            <ion-label position="floating" color="primary">Bank Name</ion-label>
+            <ion-label position="floating" color="primary">{{ 'Packages.BankName' | translate }}</ion-label>
             <ion-select>
               <ion-select-option>بنك الكويت الوطني | NBK</ion-select-option>
               <ion-select-option>البنك الأهلي الكويتي | ABK</ion-select-option>
@@ -19,7 +19,7 @@
             </ion-select>
           </ion-item>
           <ion-item lines="none">
-            <ion-label position="floating" color="primary">Holder Name</ion-label>
+            <ion-label position="floating" color="primary">{{ 'Packages.HolderName' | translate }}</ion-label>
             <ion-input type="text" formControlName="cardHolder"></ion-input>
           </ion-item>
           <div class="validation-errors">
@@ -30,7 +30,7 @@
             </ng-container>
           </div>
           <ion-item lines="none">
-            <ion-label position="floating" color="primary">Card No</ion-label>
+            <ion-label position="floating" color="primary">{{ 'Packages.CardNo' | translate }}</ion-label>
             <ion-input (keypress)="validate($event)" (keyup)="addSpace()" formControlName="cardNo"  ></ion-input>
           </ion-item>
           <div class="validation-errors">
@@ -42,7 +42,7 @@
           </div>
 
           <ion-item lines="none">
-            <ion-label position="floating" color="primary">Expiry Month & year</ion-label>
+            <ion-label position="floating" color="primary">{{ 'Packages.Expiry' | translate }}</ion-label>
             <ion-input (keypress)="validate($event)" (keyup)="addDash()" formControlName="expiry" ></ion-input>
           </ion-item>
           <div class="validation-errors">
@@ -54,7 +54,7 @@
           </div>
 
           <ion-item lines="none">
-            <ion-label position="floating" color="primary">CVC</ion-label>
+            <ion-label position="floating" color="primary">{{ 'Packages.CVC' | translate }}</ion-label>
             <ion-input type="text" formControlName="cvc"></ion-input>
           </ion-item>
           <div class="validation-errors">
@@ -69,7 +69,7 @@
       </ion-card-content>
 
       <div text-center>
-        <ion-button class="login" type="submit" [disabled]="!validationsForm.valid">Pay</ion-button>
+        <ion-button class="login" type="submit" [disabled]="!validationsForm.valid">{{ 'Packages.Pay' | translate }}</ion-button>
       </div>
     </ion-card>
   </form>

@@ -1,0 +1,85 @@
+{
+  "Login": {
+    "email" : "email",
+    "password" : "password",
+    "name" : "name",
+    "login": "Login",
+    "account": "Create Account",
+    "cPassword": "Confirm Password",
+    "create": "Create Account"
+  },
+  "ServiceGroups": {
+    "Title": "Service Groups",
+    "Add": "Add Service Group",
+    "Name": "Service Group Name"
+  },
+  "Services": {
+  "Title": "Services",
+  "Add": "Add Service",
+  "Name": "Service Name",
+  "Desc": "Description",
+  "Price": "Price",
+  "Group": "Section"
+},
+  "Packages": {
+    "Service": "Service",
+    "Persons": "Persons No.",
+    "Title": "Packages",
+    "Add": "Add Package",
+    "Name": "Package Name",
+    "Desc": "Description",
+    "Price": "Price",
+    "Services": "Select Services",
+    "Groups": "Sections",
+    "Done": "Done",
+    "Cancel": "Cancel",
+    "Amount": "Amount",
+    "Details": "Details",
+    "Search": "Search",
+    "Order": "Order",
+    "Flip": "Please, Flip to continue your request",
+    "Select": "Select",
+    "DeliveryDetails": "Delivery Details",
+    "Address": "Address",
+    "Phone": "Phone",
+    "Date": "Date",
+    "Time": "Time",
+    "GoPayment": "Go To Payment",
+    "Payment": "Payment",
+    "BankName": "Bank Name",
+    "HolderName": "Holder Name",
+    "CardNo": "Card No",
+    "Expiry": "Expiry Date",
+    "CVC": "CVC",
+    "Pay": "Pay"
+  },
+  "Orders": {
+    "Title": "Orders",
+    "Add": "Add Package",
+    "Name": "Service Name",
+    "User": "User",
+    "Address": "Address",
+    "Phone": "Phone",
+    "Date": "Date",
+    "Time": "Time",
+    "Services": "Services"
+  },
+  "Messages": {
+    "Title": "Messages",
+    "Add": "Add Package",
+    "Name": "Service Name",
+    "Msg": "Enter Message To Send"
+  },
+  "Actions": {
+    "Save": "Save",
+    "Send": "Send",
+    "Next": "Next",
+    "Back": "Back"
+  },
+  "Terms": {
+    "Title": "Terms & Conditions",
+    "Data": "1-\tPay 25 % KNet as down payments and the remain cash.\n2-\tPay 50 KWD as insurance against damages.\n3-\tCancelation before appointment by week at least.\n4-\tMoney Not returns in cancelation.\n",
+    "Accept": "Accept",
+    "Reject": "Reject"
+  }
+}

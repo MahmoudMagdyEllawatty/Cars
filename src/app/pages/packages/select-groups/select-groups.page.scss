@@ -1,20 +1,29 @@
 .login-bg{
-  --background: #f1c3e2;
+  min-width: 100%;
+  min-height: 100%;
+  --background: url('../../../../assets/imgs/bg.png') 0 0/100% 100% no-repeat transparent;
 }
+
 .login{
-  min-width: 200px;
-  --background: #B6D63E;
-  --border-radius: 20px;
+  --color: #ffffff;
+  min-width: 130px;
+  --background: #5C8BF7;
+  --border-radius: 5px;
   --box-shadow: B8B4B4;
 }
+
+
 
 .login-sec{
-  min-width: 200px;
-  --background: #F09B00;
-  --border-radius: 20px;
+  --color: #ffffff;
+  min-width: 130px;
+  --background: transparent;
+  --border-radius: 5px;
   --box-shadow: B8B4B4;
+  --border-color: #5C8BF7;
+  --border-width: 1px;
+  --border-style: solid;
 }
-
 .login[disabled]{
   min-width: 200px;
   --background: #526723;
@@ -28,4 +37,10 @@
 
 ion-item{
   --background: transparent !important;
+  --border-radius: 5px;
+  --box-shadow: B8B4B4;
+  --border-color: #5C8BF7;
+  --border-width: 1px !important;
+  --border-style: solid;
+  margin: 5px !important;
 }

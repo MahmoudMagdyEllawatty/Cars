@@ -1,17 +1,19 @@
 .login-bg{
-  --background: #f1c3e2;
+  min-width: 100%;
+  min-height: 100%;
+  --background: url('../../../../assets/imgs/bg.png') 0 0/100% 100% no-repeat transparent;
 }
 .login{
-  min-width: 200px;
-  --background: #B6D63E;
-  --border-radius: 20px;
+  min-width: 100%;
+  --background: #5C8BF7;
+  --border-radius: 5px;
   --box-shadow: B8B4B4;
 }
 
 .login-sec{
-  min-width: 200px;
-  --background: #F09B00;
-  --border-radius: 20px;
+  min-width: 100%;
+  --background: #5C8BF7;
+  --border-radius: 5px;
   --box-shadow: B8B4B4;
 }
 

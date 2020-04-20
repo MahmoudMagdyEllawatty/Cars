@@ -25,6 +25,18 @@ const routes: Routes = [
             path: 'details/:id/order',
             loadChildren: () =>
                 import('../search-packages/details/order/order.module').then(m => m.OrderPageModule)
+          }, {
+            path: 'details/:id/step2',
+            loadChildren: () =>
+                import('../search-packages/details/order/step2/step2.module').then(m => m.Step2PageModule)
+          }, {
+            path: 'details/:id/step3',
+            loadChildren: () =>
+                import('../search-packages/details/order/step3/step3.module').then(m => m.Step3PageModule)
+          }, {
+            path: 'details/:id/step4',
+            loadChildren: () =>
+                import('../search-packages/details/order/step4/step4.module').then(m => m.Step4PageModule)
           },
           {
             path: 'details/:id/order/payment',

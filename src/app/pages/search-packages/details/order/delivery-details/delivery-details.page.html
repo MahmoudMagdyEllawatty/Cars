@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Delivery Details</ion-title>
+    <ion-title>{{ 'Packages.DeliveryDetails' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,12 +8,12 @@
   <form [formGroup]="formGroup" (ngSubmit)="sumbit(formGroup.value)">
     <ion-card class="list-no">
       <ion-card-header>
-        <ion-card-title>Enter Delivery Details</ion-card-title>
+        <ion-card-title>{{ 'Packages.DeliveryDetails' | translate }}</ion-card-title>
       </ion-card-header>
       
       <ion-card-content>
         <ion-item lines="none">
-          <ion-label position="floating">Phone</ion-label>
+          <ion-label position="floating">{{ 'Packages.Phone' | translate }}</ion-label>
           <ion-input type="phone" formControlName="phone"></ion-input>
         </ion-item>
         <div class="validation-errors">
@@ -26,7 +26,7 @@
 
 
         <ion-item lines="none">
-          <ion-label position="floating">address</ion-label>
+          <ion-label position="floating">{{ 'Packages.Address' | translate }}</ion-label>
           <ion-input type="text" formControlName="address"></ion-input>
         </ion-item>
         <div class="validation-errors">
@@ -39,7 +39,7 @@
 
 
         <ion-item lines="none">
-          <ion-label position="floating">Date</ion-label>
+          <ion-label position="floating">{{ 'Packages.Date' | translate }}</ion-label>
           <ion-datetime displayFormat="YYYY-MM-DD" placeholder="Select Event Date" formControlName="date"></ion-datetime>
         </ion-item>
         <div class="validation-errors">
@@ -52,7 +52,7 @@
 
 
         <ion-item lines="none">
-          <ion-label position="floating">Time</ion-label>
+          <ion-label position="floating">{{ 'Packages.Time' | translate }}</ion-label>
           <ion-datetime displayFormat="HH:mm" placeholder="Select Event Time" formControlName="time"></ion-datetime>
         </ion-item>
         <div class="validation-errors">
@@ -65,7 +65,7 @@
       </ion-card-content>
 
       <div text-center>
-        <ion-button class="login" type="submit" [disabled]="!formGroup.valid">Go To Payment</ion-button>
+        <ion-button class="login" type="submit" [disabled]="!formGroup.valid">{{ 'Packages.GoPayment' | translate }}</ion-button>
       </div>
     </ion-card>
   </form>

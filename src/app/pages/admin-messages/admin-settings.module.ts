@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AdminSettingsPageRoutingModule } from './admin-settings-routing.module';
 
 import { AdminSettingsPage } from './admin-settings.page';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
     imports: [
@@ -14,7 +15,8 @@ import { AdminSettingsPage } from './admin-settings.page';
         FormsModule,
         IonicModule,
         AdminSettingsPageRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        TranslateModule
     ],
   declarations: [AdminSettingsPage]
 })

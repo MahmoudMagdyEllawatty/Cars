@@ -5,12 +5,12 @@
         <ion-icon name="log-out"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Packages</ion-title>
+    <ion-title>{{ 'Packages.Title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="login-bg">
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" style="margin-bottom: 60px">
     <ion-fab-button [routerLink]="['./add-package']">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>

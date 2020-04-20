@@ -66,14 +66,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/admin-dashboard/tab1',
+        redirectTo: '/admin-dashboard/tab2',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/admin-dashboard/tab1',
+    redirectTo: '/admin-dashboard/tab2',
     pathMatch: 'full'
   }
 ];

@@ -5,7 +5,12 @@
         <ion-icon name="log-out"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Services</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openLanguagePopover($event)">
+        <ion-icon name="more" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ 'Services.Title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,14 +18,14 @@
   <form [formGroup]="form" (ngSubmit)="submit(form.value)" class="list-no">
     <ion-card class="list-no">
       <ion-card-header>
-        <ion-card-title>Enter Service Data</ion-card-title>
+        <ion-card-title style="color: white">{{ 'Services.Add' | translate }}</ion-card-title>
       </ion-card-header>
 
       <ion-card-content>
 
         <ion-item class="list-no" lines="none">
-          <ion-label position="floating">Name</ion-label>
-          <ion-input type="text" formControlName="name"></ion-input>
+          <ion-label style="color: white" position="floating">{{ 'Services.Name' | translate }}</ion-label>
+          <ion-input  style="color: white" type="text" formControlName="name"></ion-input>
         </ion-item>
         <div class="validation-errors">
           <ng-container *ngFor="let validation of validationMessages.name">
@@ -31,8 +36,8 @@
         </div>
 
         <ion-item class="list-no" lines="none">
-          <ion-label position="floating">Description</ion-label>
-          <ion-input type="text" formControlName="description"></ion-input>
+          <ion-label style="color: white" position="floating">{{ 'Services.Desc' | translate }}</ion-label>
+          <ion-input style="color: white" type="text" formControlName="description"></ion-input>
         </ion-item>
         <div class="validation-errors">
           <ng-container *ngFor="let validation of validationMessages.description">
@@ -43,8 +48,8 @@
         </div>
 
         <ion-item class="list-no" lines="none">
-          <ion-label position="floating">Price</ion-label>
-          <ion-input type="number" formControlName="price"></ion-input>
+          <ion-label style="color: white" position="floating">{{ 'Services.Price' | translate }}</ion-label>
+          <ion-input style="color: white" type="number" formControlName="price"></ion-input>
         </ion-item>
         <div class="validation-errors">
           <ng-container *ngFor="let validation of validationMessages.price">
@@ -55,25 +60,32 @@
         </div>
 
         <ion-item class="list-no" lines="none">
-          <ion-label>Service Group</ion-label>
-          <ion-select formControlName="serviceGroup">
-            <ion-select-option *ngFor="let group of serviceGroups" value="{{group.id}}">{{ group.name }}</ion-select-option>
+          <ion-label style="color: white">{{ 'Services.Group' | translate }}</ion-label>
+          <ion-select style="color: white" formControlName="serviceGroup">
+            <ion-select-option style="color: white" *ngFor="let group of serviceGroups" value="{{group.id}}">{{ group.name }}</ion-select-option>
           </ion-select>
+        </ion-item>
+
+        <ion-item text-wrap class="fileUpload">
+          <ion-icon name="create" color="success">
+          </ion-icon>
+          <input type="file" class="upload" (change)="selectPhoto($event)"/>
         </ion-item>
 
       </ion-card-content>
 
 
       <div text-center>
-        <ion-button class="login" type="submit" [disabled]="!form.valid">Save</ion-button>
+        <ion-button class="login" type="submit" [disabled]="!form.valid">{{ 'Actions.Save' | translate }}</ion-button>
       </div>
     </ion-card>
   </form>
 
 
   <ion-list  class="list-no">
-    <ion-item *ngFor="let service of services|async" lines="none">
-      <p>{{ service.name }}</p>
+    <ion-item *ngFor="let service of services|async" lines="none" style="margin-top: 10px;">
+      <img src="{{service.file}}" alt="{{service.name}}" width="50px" height="50px">
+      <p style="margin-left: 10px;">{{ service.name }}</p>
 
       <ion-button color="primary" slot="end" shape="round" (click)="edit(service)">
         <ion-icon name="create"></ion-icon>

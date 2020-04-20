@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PaymentPageRoutingModule } from './payment-routing.module';
 
 import { PaymentPage } from './payment.page';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
     imports: [
@@ -14,7 +15,8 @@ import { PaymentPage } from './payment.page';
         FormsModule,
         IonicModule,
         PaymentPageRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        TranslateModule
     ],
   declarations: [PaymentPage]
 })

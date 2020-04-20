@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Select Services</ion-title>
+    <ion-title>{{ 'Packages.Services' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,21 +8,21 @@
   <ion-card class="list-no">
     <ion-card-content>
       <ion-item lines="none">
-        <ion-label>Select Services</ion-label>
+        <ion-label>{{ 'Packages.Services' | translate }}</ion-label>
         <ion-select multiple="true" [(ngModel)]="selectedServices">
           <ion-select-option [value]="item" *ngFor="let item of services" >{{ item.name }}</ion-select-option>
         </ion-select>
       </ion-item>
 
       <ion-item lines="none">
-        <ion-label>Amount:</ion-label>
-        <ion-input type="number" [(ngModel)]="amount"></ion-input>
+        <ion-label>{{ 'Packages.Amount' | translate }}</ion-label>
+        <ion-input type="number" [(ngModel)]="amount" value="1"></ion-input>
       </ion-item>
     </ion-card-content>
 
     <div text-center>
-      <ion-button class="login" (click)="done()">Done</ion-button>
-      <ion-button class="login-dng" (click)="cancel()" color="danger">Cancel</ion-button>
+      <ion-button class="login" (click)="done()">{{ 'Packages.Done' | translate }}</ion-button>
+      <ion-button class="login-sec" (click)="cancel()" color="danger">{{ 'Packages.Cancel' | translate }}</ion-button>
     </div>
   </ion-card>
 </ion-content>

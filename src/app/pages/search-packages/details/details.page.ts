@@ -22,7 +22,9 @@ export class DetailsPage implements OnInit {
       state: 0,
       price: 0,
       description: '',
-      packageServices: []
+      packageServices: [],
+      image: '',
+      persons: 0
     };
 
     const id = this.activatedRoute.snapshot.paramMap.get('id');

@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Add Package</ion-title>
+    <ion-title>{{ 'Packages.Add' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,11 +11,11 @@
   <form [formGroup]="form" (ngSubmit)="submit(form.value)" class="list-no">
     <ion-card class="list-no">
       <ion-card-header>
-        Enter Package Data
+        {{ 'Packages.Add' | translate }}
       </ion-card-header>
       <ion-card-content>
         <ion-item lines="none">
-          <ion-label position="floating">Name</ion-label>
+          <ion-label position="floating">{{ 'Packages.Name' | translate }}</ion-label>
           <ion-input type="text" formControlName="name"></ion-input>
         </ion-item>
         <div class="validation-errors">
@@ -28,8 +28,8 @@
 
 
         <ion-item lines="none">
-          <ion-label position="floating">Description</ion-label>
-          <ion-input type="text" formControlName="description"></ion-input>
+          <ion-label position="floating">{{ 'Packages.Desc' | translate }}</ion-label>
+          <ion-textarea  type="text" formControlName="description"></ion-textarea>
         </ion-item>
         <div class="validation-errors">
           <ng-container *ngFor="let validation of validationMessages.description">
@@ -41,7 +41,7 @@
 
 
         <ion-item lines="none">
-          <ion-label position="floating">Price</ion-label>
+          <ion-label position="floating">{{ 'Packages.Price' | translate }}</ion-label>
           <ion-input type="number" formControlName="price"></ion-input>
         </ion-item>
         <div class="validation-errors">
@@ -53,14 +53,33 @@
         </div>
 
 
-            <div text-center>
-              <ion-button (click)="selectPackageServices()" class="login-sec" [disabled]="!form.valid">Select Package Services</ion-button>
+        <ion-item lines="none">
+          <ion-label position="floating">{{ 'Packages.Persons' | translate }}</ion-label>
+          <ion-input type="number" formControlName="persons"></ion-input>
+        </ion-item>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validationMessages.persons">
+            <div class="error-message" *ngIf="form.get('persons').hasError(validation.type) && (form.get('persons').dirty || form.get('persons').touched)">
+              <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+
+        <ion-item text-wrap class="fileUpload">
+          <ion-icon name="create" color="success">
+          </ion-icon>
+          <input type="file" class="upload" (change)="selectPhoto($event)"/>
+        </ion-item>
+
+
+        <div text-center>
+              <ion-button (click)="selectPackageServices()" class="login-sec" [disabled]="!form.valid">{{ 'Packages.Services' | translate }}</ion-button>
             </div>
 
       </ion-card-content>
 
       <div text-center>
-        <ion-button class="login" type="submit" [disabled]="!form.valid">Save</ion-button>
+        <ion-button class="login" type="submit" [disabled]="!form.valid">{{ 'Actions.Save' | translate }}</ion-button>
       </div>
 
     </ion-card>

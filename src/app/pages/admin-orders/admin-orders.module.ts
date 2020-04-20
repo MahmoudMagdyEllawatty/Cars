@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { AdminOrdersPageRoutingModule } from './admin-orders-routing.module';
 
 import { AdminOrdersPage } from './admin-orders.page';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AdminOrdersPageRoutingModule
+    AdminOrdersPageRoutingModule,
+      TranslateModule
   ],
   declarations: [AdminOrdersPage]
 })

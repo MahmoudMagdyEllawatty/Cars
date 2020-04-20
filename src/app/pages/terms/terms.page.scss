@@ -1,0 +1,25 @@
+.login{
+  --color: #ffffff;
+  min-width: 200px;
+  --background: #FF347A;
+  --border-radius: 5px;
+  --box-shadow: B8B4B4;
+}
+.reject{
+  --color: #ffffff;
+  min-width: 200px;
+  max-width: 200px;
+  --background: #ADADAD;
+  --border-radius: 5px;
+  --box-shadow: B8B4B4;
+}
+
+ion-label{
+  white-space: pre-line!important;
+}
+
+.login-bg{
+  min-width: 100%;
+  min-height: 100%;
+  --background: url('../../../assets/imgs/bg.png') 0 0/100% 100% no-repeat transparent;
+}

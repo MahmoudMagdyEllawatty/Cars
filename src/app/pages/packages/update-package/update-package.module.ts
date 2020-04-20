@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { UpdatePackagePageRoutingModule } from './update-package-routing.module';
 
 import { UpdatePackagePage } from './update-package.page';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    UpdatePackagePageRoutingModule
+    UpdatePackagePageRoutingModule,
+      TranslateModule
   ],
   declarations: [UpdatePackagePage]
 })

@@ -1,11 +1,18 @@
+\<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'Login.account' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content padding class="login-bg form-content">
   <form [formGroup]="validationsForm" class="list"  (ngSubmit)="register(validationsForm.value)">
     <ion-card class="list-no">
       <ion-card-content>
         <ion-list class="list-no">
           <ion-item lines="none">
-            <ion-label position="floating" color="primary">{{ 'Login.name' | translate }}</ion-label>
-            <ion-input type="text" formControlName="username"></ion-input>
+            <ion-input type="text" formControlName="username" placeholder="{{ 'Login.name' | translate }}"></ion-input>
           </ion-item>
           <div class="validation-errors">
             <ng-container *ngFor="let validation of validationMessages.username">
@@ -16,8 +23,7 @@
           </div>
 
           <ion-item lines="none">
-            <ion-label position="floating" color="primary">{{ 'Login.email' | translate }}</ion-label>
-            <ion-input type="text" formControlName="email"></ion-input>
+            <ion-input type="text" placeholder="{{ 'Login.email' | translate }}" formControlName="email"></ion-input>
           </ion-item>
           <div class="validation-errors">
             <ng-container *ngFor="let validation of validationMessages.email">
@@ -29,8 +35,7 @@
 
           <div formGroupName="matching_passwords">
             <ion-item lines="none">
-              <ion-label position="floating" color="primary">{{ 'Login.password' | translate }}</ion-label>
-              <ion-input type="password" formControlName="password"></ion-input>
+              <ion-input type="password" placeholder="{{ 'Login.password' | translate }}" formControlName="password"></ion-input>
             </ion-item>
             <div class="validation-errors">
               <ng-container *ngFor="let validation of validationMessages.password">
@@ -41,8 +46,7 @@
             </div>
 
             <ion-item lines="none">
-              <ion-label position="floating" color="primary">{{ 'Login.cPassword' | translate }}</ion-label>
-              <ion-input type="password" formControlName="confirm_password"></ion-input>
+              <ion-input type="password" placeholder="{{ 'Login.cPassword' | translate }}" formControlName="confirm_password"></ion-input>
             </ion-item>
             <div class="validation-errors">
               <ng-container *ngFor="let validation of validationMessages.confirm_password">

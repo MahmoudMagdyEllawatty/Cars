@@ -33,10 +33,10 @@ export class ServicesPage implements OnInit {
       {type: 'minLength', message: 'Service Description must be greater than 5 chars'},
       {type: 'maxLength', message: 'Service Description must be less than 50 chars'}
     ],
-    price: [
-      {type: 'required', message: 'Service Price is required'},
-      {type: 'min', message: 'Service Price must be greater than 1'}
-    ],
+    // price: [
+    //   {type: 'required', message: 'Service Price is required'},
+    //   {type: 'min', message: 'Service Price must be greater than 1'}
+    // ],
     serviceGroup: [
       {type: 'required', message: 'Service Group is required'}
     ]
@@ -99,13 +99,7 @@ export class ServicesPage implements OnInit {
                     });
             });
     }
-    async openLanguagePopover(evt) {
-        const popover = await this.popCtrl.create({
-            component: LanguagePopoverPage,
-            event: evt
-        });
-        await popover.present();
-    }
+
   ngOnInit() {
     this.services = this.serviceService.getServices();
     this.serviceGroupService.getServiceGroups()
@@ -140,10 +134,10 @@ export class ServicesPage implements OnInit {
           Validators.minLength(5),
           Validators.maxLength(50)
       ])),
-      price: new FormControl(price, Validators.compose([
-          Validators.required,
-          Validators.min(1)
-      ])),
+      // price: new FormControl(price, Validators.compose([
+      //     Validators.required,
+      //     Validators.min(1)
+      // ])),
       serviceGroup: new FormControl(serviceGroup, Validators.compose([
           Validators.required
       ]))
@@ -195,7 +189,7 @@ export class ServicesPage implements OnInit {
       name: value.name,
       description: value.description,
       serviceGroup: value.serviceGroup,
-      price: value.price,
+      price: 0,
         file: this.imageURL
     };
 

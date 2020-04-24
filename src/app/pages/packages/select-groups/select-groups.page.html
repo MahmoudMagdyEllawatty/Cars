@@ -8,14 +8,18 @@
   <ion-list class="list-no">
     <ion-item *ngFor="let group of groups|async" lines="none">
           <h3>{{ group.name }}</h3>
-          <ion-button class="login-sec" slot="end"  (click)="openServices(group)">
+
+          <ion-button *ngIf="!hasGroup(group)"  class="login-sec" slot="end"  (click)="openServices(group)">
             {{ 'Packages.Services' | translate }}
           </ion-button>
+        <ion-button *ngIf="hasGroup(group)"  class="login" slot="end"  (click)="openServices(group)">
+            {{ 'Packages.DoneServices' | translate }}
+        </ion-button>
     </ion-item>
 
   </ion-list>
   <div text-center>
-    <ion-button class="login"  (click)="done()">{{ 'Packages.Done' | translate }}</ion-button>
+    <ion-button class="login" [disabled]="!(selectedPackageServices.length == 6)"  (click)="done()">{{ 'Packages.Done' | translate }}</ion-button>
   </div>
 
 </ion-content>

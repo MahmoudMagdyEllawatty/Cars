@@ -95,6 +95,7 @@ export class AddPackagePage implements OnInit {
         });
   }
   ngOnInit() {
+    this.packageServices = [];
     this.form = this.builder.group({
       name: new FormControl('', Validators.compose([
           Validators.required,

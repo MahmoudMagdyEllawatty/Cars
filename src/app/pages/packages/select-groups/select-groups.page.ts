@@ -53,4 +53,10 @@ export class SelectGroupsPage implements OnInit {
     });
     console.log(this.selectedPackageServices);
   }
+
+  hasGroup(group: ServiceGroup) {
+    return this.selectedPackageServices.find(item => {
+      return item.serviceGroup.id === group.id;
+    });
+  }
 }

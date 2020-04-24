@@ -79,7 +79,7 @@
       </ion-card-content>
 
       <div text-center>
-        <ion-button class="login" type="submit" [disabled]="!form.valid">{{ 'Actions.Save' | translate }}</ion-button>
+        <ion-button class="login" type="submit" [disabled]="!(form.valid && packageServices.length == 6)">{{ 'Actions.Save' | translate }}</ion-button>
       </div>
 
     </ion-card>

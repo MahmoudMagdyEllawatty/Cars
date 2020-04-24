@@ -39,7 +39,6 @@ export class LoginPage implements OnInit {
         this.password = '';
   }
 
-
   async login() {
     const loading = await this.loadingController.create({
       spinner: 'bubbles'

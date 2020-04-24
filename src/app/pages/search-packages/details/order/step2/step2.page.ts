@@ -148,19 +148,43 @@ export class Step2Page implements OnInit {
   }
 
   backData(i) {
-
+    const url = 'user-dashboard/tab1/details/' + this.aPackage.id + '/order';
+    this.router.navigate([url]);
   }
   showData(i) {
-    console.log(this.packageServices);
-    const order = this.orderService.order;
-    this.packageServices.forEach(item => {
-      order.servicePackage.push(item);
-    });
-    console.log(order);
-    this.orderService.order = order;
-    // const url = 'user-dashboard/tab1/details/' + this.aPackage.id + '/order/payment';
-    const url = 'user-dashboard/tab1/details/' + this.aPackage.id + '/step3';
-    this.router.navigate([url]);
+    let exist = false;
+    // tslint:disable-next-line:no-shadowed-variable
+    for ( let i = 0; i < this.PackageService.amount ; i++) {
+      if (this.packageServices[0].services[i] === undefined) {
+        exist = true;
+      }
+    }
+    if (exist) {
+      alert('Please Select Service First');
+    } else {
+      console.log(this.packageServices);
+      const order = this.orderService.order;
+      let index = 0;
+      let exist = false;
+      order.servicePackage.forEach(item => {
+        if (item.serviceGroup.id === this.PackageService.serviceGroup.id) {
+          exist = true;
+        } else {
+          index += 1;
+        }
+      });
+      if (exist) {
+        order.servicePackage.splice(index,1);
+      }
+      this.packageServices.forEach(item => {
+        order.servicePackage.push(item);
+      });
+      console.log(order);
+      this.orderService.order = order;
+      // const url = 'user-dashboard/tab1/details/' + this.aPackage.id + '/order/payment';
+      const url = 'user-dashboard/tab1/details/' + this.aPackage.id + '/step3';
+      this.router.navigate([url]);
+    }
   }
 
   checkData(event: any, ser: Service, serGroup: ServiceGroup) {

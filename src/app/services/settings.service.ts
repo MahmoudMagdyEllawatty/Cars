@@ -3,6 +3,7 @@ import {Observable} from 'rxjs';
 import {AngularFirestore, AngularFirestoreCollection, DocumentReference} from '@angular/fire/firestore';
 import {Order} from './order.service';
 import {map} from 'rxjs/operators';
+import {Service} from './service.service';
 
 export class MessageUsers {
   userId: string;
@@ -55,4 +56,7 @@ export class SettingsService {
   updateOrder(message: Message): Promise<void> {
     return this.messageCollection.doc(message.id).update(message);
   }
+    deleteService(service: Message): Promise<void> {
+        return this.messageCollection.doc(service.id).delete();
+    }
 }

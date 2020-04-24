@@ -159,20 +159,56 @@ export class Step4Page implements OnInit {
   }
 
   backData(i) {
-
-  }
-  showData(i) {
-    console.log(this.packageServices);
-    const order = this.orderService.order;
-    this.packageServices.forEach(item => {
-      order.servicePackage.push(item);
-    });
-    console.log(order);
-    this.orderService.order = order;
-    const url = 'user-dashboard/tab1/details/' + this.aPackage.id + '/order/delivery-details';
-    // const url = 'user-dashboard/tab1/details/' + this.aPackage.id + '/step4';
+    const url = 'user-dashboard/tab1/details/' + this.aPackage.id + '/step3';
     this.router.navigate([url]);
   }
+  showData(i) {
+    if (this.packageServices[0] === undefined || this.packageServices[1] === undefined) {
+      alert('Please Select Service First');
+    } else if (this.PackageService[0].amount !== this.packageServices[0].services.length) {
+      alert('Please Select Service First');
+    } else if (this.PackageService[1].amount !== this.packageServices[1].services.length) {
+      alert('Please Select Service First');
+    } else {
+      console.log(this.packageServices);
+      const order = this.orderService.order;
+      let index = 0;
+      let exist = false;
+      order.servicePackage.forEach(item => {
+        if (item.serviceGroup.id === this.PackageService[0].serviceGroup.id) {
+          exist = true;
+        } else {
+          index += 1;
+        }
+      });
+      if (exist) {
+        order.servicePackage.splice(index, 1);
+      }
+      index = 0;
+      exist = false;
+      order.servicePackage.forEach(item => {
+        if (item.serviceGroup.id === this.PackageService[1].serviceGroup.id) {
+          exist = true;
+        } else {
+          index += 1;
+        }
+      });
+      if (exist) {
+        order.servicePackage.splice(index, 1);
+      }
+
+
+      this.packageServices.forEach(item => {
+        order.servicePackage.push(item);
+      });
+      console.log(order);
+      this.orderService.order = order;
+      // const url = 'user-dashboard/tab1/details/' + this.aPackage.id + '/order/payment';
+      const url = 'user-dashboard/tab1/details/' + this.aPackage.id + '/order/delivery-details';
+      this.router.navigate([url]);
+    }
+  }
+
 
   checkData(event: any, ser: Service, serGroup: ServiceGroup) {
     if (event.target.checked) {

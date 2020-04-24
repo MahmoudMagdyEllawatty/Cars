@@ -161,10 +161,13 @@ export class OrderPage implements OnInit {
   }
 
   backData(i) {
-
+    const url = 'user-dashboard/tab1/details/' + this.aPackage.id;
+    this.router.navigate([url]);
   }
   showData(i) {
-    if (this.PackageService.amount !== this.packageServices[0].services.length) {
+    if (this.packageServices.length === 0) {
+      alert('Please Select Service First');
+    } else if (this.PackageService.amount !== this.packageServices[0].services.length) {
       alert('Please Select Service First');
     } else {
       console.log(this.packageServices);

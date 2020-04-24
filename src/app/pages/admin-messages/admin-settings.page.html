@@ -38,6 +38,14 @@
   <ion-list class="list-no">
     <ion-item *ngFor="let msg of messages|async" lines="none">
       <h2 style="color: white">{{ msg.message }}</h2>
+      <ion-button color="primary" slot="end" shape="round" (click)="edit(msg)">
+        <ion-icon name="create"></ion-icon>
+      </ion-button>
+
+      <ion-button color="danger" slot="end" shape="round" (click)="delete(msg)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+
     </ion-item>
   </ion-list>
 </ion-content>

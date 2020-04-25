@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { Step3PageRoutingModule } from './step3-routing.module';
+import { NgxIonicImageViewerModule } from 'ngx-ionic-image-viewer';
 
 import { Step3Page } from './step3.page';
 import {TranslateModule} from '@ngx-translate/core';
@@ -15,7 +16,8 @@ import {TranslateModule} from '@ngx-translate/core';
     FormsModule,
     IonicModule,
     Step3PageRoutingModule,
-      TranslateModule
+      TranslateModule,
+    NgxIonicImageViewerModule
   ],
   declarations: [Step3Page]
 })

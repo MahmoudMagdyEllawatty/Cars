@@ -16,7 +16,7 @@ import {SelectServicesPage} from './pages/packages/select-services/select-servic
 import {SelectServicesPageModule} from './pages/packages/select-services/select-services.module';
 import {SelectGroupsPageModule} from './pages/packages/select-groups/select-groups.module';
 
-
+import { NgxIonicImageViewerModule } from 'ngx-ionic-image-viewer';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -35,6 +35,7 @@ export function LanguageLoader(http: HttpClient) {
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
       IonicStorageModule.forRoot(),
     HttpClientModule,
+    NgxIonicImageViewerModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

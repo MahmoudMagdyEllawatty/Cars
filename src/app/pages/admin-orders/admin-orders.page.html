@@ -29,7 +29,7 @@
 
           <h1>{{ 'Orders.Services' | translate }} :</h1>
           <ion-item *ngFor="let ser of order.servicePackage">
-            <ion-card>
+            <ion-card style="background: white !important;">
               <ion-card-header>{{ ser.serviceGroup.name }}</ion-card-header>
               <ion-card-content>
                 <ion-item *ngFor="let s of ser.services">

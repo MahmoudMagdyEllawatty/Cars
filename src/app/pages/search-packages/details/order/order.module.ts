@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { OrderPageRoutingModule } from './order-routing.module';
-
+import { NgxIonicImageViewerModule } from 'ngx-ionic-image-viewer';
 import { OrderPage } from './order.page';
 import {TranslateModule} from '@ngx-translate/core';
 
@@ -15,7 +15,8 @@ import {TranslateModule} from '@ngx-translate/core';
     FormsModule,
     IonicModule,
     OrderPageRoutingModule,
-      TranslateModule
+      TranslateModule,
+    NgxIonicImageViewerModule
   ],
   declarations: [OrderPage]
 })

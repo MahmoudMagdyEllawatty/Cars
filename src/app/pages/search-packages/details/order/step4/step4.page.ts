@@ -3,9 +3,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../../../../services/user.service';
 import {OrderService} from '../../../../../services/order.service';
 import {Package, PackageServices, PackageService} from '../../../../../services/package.service';
-import {IonSlides} from '@ionic/angular';
+import {IonSlides, ModalController} from '@ionic/angular';
 import {Service} from '../../../../../services/service.service';
 import {ServiceGroup} from '../../../../../services/service-group.service';
+import { ViewerModalComponent } from 'ngx-ionic-image-viewer';
 
 @Component({
   selector: 'app-step4',
@@ -18,6 +19,7 @@ export class Step4Page implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
               private userService: UserService,
               private orderService: OrderService,
+              public modalController: ModalController,
               private router: Router,
               private packageService: PackageService) { }
   aPackage: Package;
@@ -276,5 +278,18 @@ export class Step4Page implements OnInit {
     }
   }
 
+  async openViewer(service: Service) {
+    const modal = await this.modalController.create({
+      component: ViewerModalComponent,
+      componentProps: {
+        src: service.file,
+        text: service.description
+      },
+      cssClass: 'ion-img-viewer',
+      keyboardClose: true,
+      showBackdrop: true
+    });
 
+    return await modal.present();
+  }
 }

@@ -30,7 +30,7 @@
         {{ 'Packages.Select' | translate }} {{ PackageService[cIndex].amount }} {{ 'Packages.Services' | translate }}
       </ion-card-subtitle>
       <ion-list *ngIf="PackageService[cIndex].amount > 1" class="list-no">
-        <ion-item *ngFor="let ser of PackageService[cIndex].services" lines="none"  style="margin-bottom: 10px">
+        <ion-item *ngFor="let ser of PackageService[cIndex].services" lines="none"  style="margin-bottom: 10px" (click)="openViewer(ser)">
           <img src="{{ser.file}}" alt="{{ser.name}}" width="50px" height="50px" style="width: 50px;height: 50px">
           <ion-label>{{ser.name}}</ion-label>
           <ion-checkbox slot="end" (ionChange)="checkData($event,ser,PackageService[cIndex].serviceGroup)"></ion-checkbox>
@@ -39,7 +39,7 @@
 
       <ion-list *ngIf="PackageService[cIndex].amount == 1" class="list-no">
         <ion-radio-group [(ngModel)]="services[cIndex]" (ionChange)="data()">
-          <ion-item *ngFor="let ser of PackageService[cIndex].services;let ii=index" lines="none"  style="margin-bottom: 10px">
+          <ion-item *ngFor="let ser of PackageService[cIndex].services;let ii=index" lines="none"  style="margin-bottom: 10px" (click)="openViewer(ser)">
             <img src="{{ser.file}}" alt="{{ser.name}}" width="50px" height="50px" style="width: 50px;height: 50px">
             <ion-label>{{ser.name}}</ion-label>
             <ion-radio slot="end" [value]="ser" checked *ngIf="ii < 1"></ion-radio>

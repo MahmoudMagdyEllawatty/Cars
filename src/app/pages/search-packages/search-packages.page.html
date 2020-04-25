@@ -13,7 +13,7 @@
   <ion-searchbar showCancelButton="focus" animated placeholder="Search Packages" debounce="500" (ionInput)="search($event)" ></ion-searchbar>
   <ion-list class="list-no">
     <ion-item *ngFor="let item of packages" [routerLink]="['./details/',item.id]" lines="none">
-      <ion-card>
+      <ion-card style="background: white !important;">
         <ion-card-content>
           <ion-row>
             <ion-col style="width: 50%">

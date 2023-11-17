@@ -11,36 +11,22 @@ const routes: Routes = [
     component: AdminDashboardPage,
     children: [
       {
-        path: 'tab1',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-                import('../service-groups/service-groups.module').then(m => m.ServiceGroupsPageModule)
-          }
-        ]
-      },
-      {
         path: 'tab2',
         children: [
           {
             path: '',
             loadChildren: () =>
-                import('../services/services.module').then(m => m.ServicesPageModule)
+                import('../categories/categories.module').then(m => m.CategoriesPageModule)
           }
         ]
       },
       {
-        path: 'tab3',
+        path: 'tab5',
         children: [
           {
             path: '',
             loadChildren: () =>
-                import('../packages/packages.module').then(m => m.PackagesPageModule)
-          },
-          {
-            path: 'view-package/:id',
-            loadChildren: () => import('../packages/update-package/update-package.module').then( m => m.UpdatePackagePageModule)
+                import('../customers/customers.module').then(m => m.CustomersPageModule)
           }
         ]
       },
@@ -50,12 +36,16 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-                import('../admin-orders/admin-orders.module').then(m => m.AdminOrdersPageModule)
+                import('../cars/cars.module').then(m => m.CarsPageModule)
+          },
+          {
+            path: 'details/:id',
+            loadChildren: () => import('../search-cars/details/details.module').then( m => m.DetailsPageModule)
           }
         ]
       },
       {
-        path: 'tab5',
+        path: 'tab3',
         children: [
           {
             path: '',

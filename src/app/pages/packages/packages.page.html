@@ -9,23 +9,24 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="login-bg">
+<ion-content >
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" style="margin-bottom: 60px">
     <ion-fab-button [routerLink]="['./add-package']">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  <ion-list class="list-no">
+  <ion-list class="list-no" style="margin-bottom: 60px">
     <ion-item *ngFor="let aPackage of packages|async" lines="none">
-      <ion-card style="background: white !important;">
+      <ion-card style="width: 100%">
         <ion-card-content>
           <ion-row>
-            <ion-col style="width: 50%">
-              <img src="{{aPackage.image}}" width="100%" height="100px" alt="{{aPackage.name}}">
+            <ion-col style="width: 20%">
+              <img src="{{aPackage.image}}" width="100px" height="100px" style="width: 100px !important;" alt="{{aPackage.name}}">
             </ion-col>
             <ion-col>
-              <ion-item>{{ aPackage.name }}</ion-item>
-              <ion-item>{{ 'Packages.Price' | translate }}:{{ aPackage.price }}</ion-item>
+              <ion-item lines="none" *ngIf="lang === 'ar' || lang == ''">{{ aPackage.name }}</ion-item>
+              <ion-item lines="none" *ngIf="lang === 'en'">{{ aPackage.nameEn }}</ion-item>
+              <ion-item lines="none">{{ 'Packages.Price' | translate }}:{{ aPackage.price }}</ion-item>
             </ion-col>
           </ion-row>
           <ion-button color="primary" slot="end" shape="round" [routerLink]="['./view-package/',aPackage.id]">
@@ -37,9 +38,6 @@
         </ion-card-content>
 
       </ion-card>
-
-
-
     </ion-item>
   </ion-list>
 </ion-content>

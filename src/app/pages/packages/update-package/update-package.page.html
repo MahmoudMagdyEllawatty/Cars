@@ -7,38 +7,38 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card style="background: white !important;">
+<ion-content  >
+  <ion-card  class="list-no">
     <ion-card-header>
       <img src="{{aPackage.image}}" alt="{{aPackage.name}}" width="100%" height="190px">
-      <ion-card-title>{{ aPackage.name }}</ion-card-title>
-      <ion-card-subtitle> {{ aPackage.price}} KWD</ion-card-subtitle>
+      <ion-card-title style="color: black">{{ aPackage.name }}</ion-card-title>
+      <ion-card-subtitle style="color: black"> {{ aPackage.price}} KWD</ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>
       <ion-grid>
         <ion-row>
-          <p>{{ aPackage.description}}</p>
+          <p style="color: black">{{ aPackage.description}}</p>
         </ion-row>
         <ion-row>
-          <ion-card style="background: white !important;">
+          <ion-card >
             <ion-card-content>
                 <ion-item *ngFor="let item of aPackage.packageServices">
                   <ion-grid>
-                    <ion-row>
+                    <ion-row style="color: black">
                       {{ 'Packages.Groups' | translate }} : {{ item.serviceGroup.name }}
                     </ion-row>
 
-                    <ion-row>
+                    <ion-row style="color: black">
                       {{ 'Packages.Amount' | translate }} : {{ item.amount }}
                     </ion-row>
 
 
                     <ion-row>
-                      <h5 style="width: 100%">{{ 'Packages.Service' | translate }} :</h5>
+                      <h5 style="width: 100%;color: black">{{ 'Packages.Service' | translate }} :</h5>
                       <div text-center style="width: 100%" *ngFor="let ser of item.services">
                         <img src="{{ser.file}}" alt="{{ser.name}}" style="width: 50px !important;height: 50px !important;">
-                        <p style="margin-left: 10px;">{{ ser.name }}</p>
+                        <p style="margin-left: 10px;color: black">{{ ser.name }}</p>
                       </div>
                     </ion-row>
                   </ion-grid>

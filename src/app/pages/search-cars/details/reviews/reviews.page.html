@@ -1,0 +1,65 @@
+
+<ion-content>
+  <ion-list  class="list-no">
+    <ion-item lines="none">
+    <ion-button class="back_button" (click)="back()">
+      <ion-icon slot="icon-only" style="color: #252836" name="arrow-back"></ion-icon>
+    </ion-button>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-list class="list-no">
+    <ion-item lines="none" *ngFor="let review of reviews">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <img src="../../../../../assets/imgs/default_logo.png" alt="logo"  class="default_avatar">
+            </ion-col>
+            <ion-col>
+              <h3>{{ review.user.name }}</h3>
+              <rating [rate]="review.rating" readonly="true" size="default"></rating>
+              <p>{{review.review}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </ion-item>
+  </ion-list>
+
+
+  <ion-card *ngIf="userService.user != null">
+
+    <ion-card-content>
+      <form [formGroup]="form" class="list"  (ngSubmit)="register(form.value)">
+
+        <ion-list class="list-no">
+          <ion-item lines="none" text-center>
+            <ion-input type="text"  formControlName="review" placeholder="{{ 'Reviews.review' | translate }}"></ion-input>
+            <div class="validation-errors">
+              <ng-container *ngFor="let validation of validationMessages.review">
+                <div class="error-message" *ngIf="form.get('review').hasError(validation.type) && (form.get('review').dirty || form.get('review').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-item>
+
+          <ion-item class="list-no" lines="none">
+            <rating size="default" readonly="false" formControlName="rating">
+
+            </rating>
+          </ion-item>
+        </ion-list>
+
+
+        <div text-center>
+          <ion-button class="login"  type="submit" [disabled]="!form.valid">{{ 'Reviews.add_review' | translate }}</ion-button>
+        </div>
+
+
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

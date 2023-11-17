@@ -5,20 +5,20 @@
         <ion-icon name="log-out"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>{{ 'Messages.Title' | translate }}</ion-title>
+    <ion-title>Notifications</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="login-bg">
+<ion-content >
   <form [formGroup]="form" (ngSubmit)="submit(form.value)">
     <ion-card class="list-no">
       <ion-card-header>
-        <ion-card-title style="color: white">
-          {{ 'Messages.Msg' | translate }}
+        <ion-card-title style="color: black">
+          Notification Text
         </ion-card-title>
         <ion-card-content>
           <ion-item lines="none">
-            <ion-input type="text" style="color: white;" placeholder="{{ 'Messages.Msg' | translate }}" formControlName="text"></ion-input>
+            <ion-input type="text" style="color: black;" placeholder="Notification Text" formControlName="text"></ion-input>
           </ion-item>
           <div class="validation-errors">
             <ng-container *ngFor="let validation of validationMessages.text">
@@ -30,14 +30,14 @@
         </ion-card-content>
       </ion-card-header>
       <div text-center>
-        <ion-button class="login"  type="submit" [disabled]="!form.valid">{{ 'Actions.Send' | translate }}</ion-button>
+        <ion-button class="login"  type="submit" [disabled]="!form.valid">Send</ion-button>
       </div>
     </ion-card>
   </form>
 
-  <ion-list class="list-no">
+  <ion-list class="list-no" style="margin-bottom: 60px;">
     <ion-item *ngFor="let msg of messages|async" lines="none">
-      <h2 style="color: white">{{ msg.message }}</h2>
+      <h2 style="color: black">{{ msg.message }}</h2>
       <ion-button color="primary" slot="end" shape="round" (click)="edit(msg)">
         <ion-icon name="create"></ion-icon>
       </ion-button>

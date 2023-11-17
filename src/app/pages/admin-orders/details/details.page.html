@@ -1,9 +1,40 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>details</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'Packages.Details' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content >
+  <ion-card class="list-no">
+    <ion-card-header>
+      <ion-card-title style="color: black">
+        <h1> {{ 'Orders.User' | translate }} : {{ order.user.name }}</h1>
+      </ion-card-title>
+      <ion-card-subtitle style="color: black">
+        <h2 style="color: black">{{ 'Orders.Address' | translate }}:{{ order.address }}</h2>
+        <h2 style="color: black">{{ 'Orders.Phone' | translate }}:{{ order.phone }}</h2>
+      </ion-card-subtitle>
+    </ion-card-header>
 
+    <ion-card-content>
+      <h2 style="color: black">{{ 'Orders.Date' | translate }}:{{ order.date }}</h2>
+      <h2 style="color: black">{{ 'Orders.Time' | translate }}:{{ order.time }}</h2>
+
+      <h1 style="color: black">{{ 'Orders.Services' | translate }} :</h1>
+      <ion-item *ngFor="let ser of order.servicePackage">
+        <ion-card >
+          <ion-card-header style="color: black">{{ ser.serviceGroup.name }}</ion-card-header>
+          <ion-card-content style="color: black">
+            <ion-item *ngFor="let s of ser.services">
+              <img src="{{s.file}}" alt="{{s.name}}" width="50px" height="50px" style="width: 50px;height: 50px">
+              <h3 style="color: black"> {{ s.name }}</h3>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

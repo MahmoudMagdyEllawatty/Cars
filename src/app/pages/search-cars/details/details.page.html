@@ -1,0 +1,130 @@
+
+<ion-content >
+  <ion-list class="list-no">
+    <ion-item lines="none">
+      <ion-button class="back_button" (click)="back()">
+        <ion-icon slot="icon-only" style="color: #252836" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-slides [options]="{ slidesPerView: 1, zoom: false, grabCursor: true }">
+        <ion-slide *ngFor="let image of car.album" style="width: 200px; height: 300px; border: 2px solid #f8f8f8">
+          <ion-col>
+            <ion-card style="width: 100%;">
+              <img src="{{image}}" style="width: 100%;height: 300px;object-fit: fill">
+            </ion-card>
+          </ion-col>
+        </ion-slide>
+      </ion-slides>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-icon name="star" style="color: #DEB754 !important;" size="large"></ion-icon><span class="rating_text">{{ car.rating }}</span>
+          </ion-col>
+          <ion-col>
+            <ion-icon name="location" style="color: #FF1D38"></ion-icon><span class="address_text">{{ car.address }}</span>
+          </ion-col>
+          <ion-col>
+            <ion-button style="--background: #FCF1EE;--border-radius: 32px" (click)="showReviews()">
+              <ion-icon name="chatbubbles" style="color: #DE7254"></ion-icon>
+              <span class="button_reviews_text">{{ 'MyCars.Read_Reviews' | translate}}</span>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-item>
+
+    <ion-item lines="none">
+      <h2 class="car_name">{{ car.name }}</h2>
+    </ion-item>
+
+    <ion-item lines="none">
+        <ion-grid class="table">
+          <ion-row>
+            <ion-col>
+              {{ 'MyCars.brand' | translate }}
+            </ion-col>
+            <ion-col>
+              {{ car.brand == null ? '' :  car.brand.name}}
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              {{ 'MyCars.price' | translate }}
+            </ion-col>
+            <ion-col>
+              {{ car.price}} KWD
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              {{ 'MyCars.year' | translate }}
+            </ion-col>
+            <ion-col>
+              {{ car.year }}
+
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              {{ 'MyCars.motor' | translate }}
+            </ion-col>
+            <ion-col>
+              {{ car.motor }}
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              {{ 'MyCars.model' | translate }}
+            </ion-col>
+            <ion-col>
+{{ car.model}}
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              {{ 'MyCars.seats' | translate }}
+            </ion-col>
+            <ion-col>
+{{ car.seats }}
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              {{ 'MyCars.fuel_type' | translate }}
+            </ion-col>
+            <ion-col>
+{{ car.fuel_type}}
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              {{ 'MyCars.color' | translate }}
+            </ion-col>
+            <ion-col>
+{{ car.color }}
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+    </ion-item>
+
+    <div text-center>
+      <ion-button class="login" (click)="pay()" *ngIf="userService.user != null">
+        <span style="color: #FFF;font-family: Roboto;font-size: 25px;font-style: normal;font-weight: 700;line-height: normal;">{{ 'MyCars.Buy' | translate}}</span>
+      </ion-button>
+    </div>
+  </ion-list>
+</ion-content>

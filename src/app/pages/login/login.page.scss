@@ -4,15 +4,23 @@
   --background: url('../../../assets/imgs/app.jpg') 0 0/100% 100% no-repeat transparent;
 }
 
+ion-content{
+  --background: #F2ECED !important;
+}
+
 ion-input{
-  margin-left: 32%;
-  min-width: 200px;
-  max-width: 200px;
-  --color: #ffffff;
+  margin: auto;
+  width: 90%;
+  min-width: 90%;
+  max-width: 90%;
+  --color: black;
   .text-input{ text-align: center; }
-  --background: url('../../../assets/imgs/et_bg.png') 0 0/100% 100% no-repeat transparent;
+  --background: #fff;
+  border-radius: 30px !important;
+  border:none !important;
 }
 .login{
+  width: 90%;
   --color: #ffffff;
   min-width: 200px;
   --background: #FF347A;

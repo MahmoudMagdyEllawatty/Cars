@@ -1,0 +1,41 @@
+.list-no{
+  background: transparent !important;
+}
+
+ion-item{
+  --background: transparent !important;
+  max-width: 90%;
+  margin: auto;
+}
+.back_button{
+  --border-radius: 14.4px;
+  --background: #FFF;
+  --box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  min-width: 44px;
+  min-height: 44px;
+}
+
+ion-content{
+  --background: #F2ECED !important;
+}
+
+ion-input{
+  margin: auto;
+  width: 90%;
+  min-width: 90%;
+  max-width: 90%;
+  --color: black;
+  --background: #fff;
+  border-radius: 30px !important;
+  border:none !important;
+}
+
+rating {
+  ion-icon {
+    color: gray;
+
+    &.filled {
+      color: #ffb400;
+    }
+  }
+}

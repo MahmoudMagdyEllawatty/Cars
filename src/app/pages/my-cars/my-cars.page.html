@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/']">
+        <ion-icon name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ 'MyCars.Title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="list-no">
+
+    <ion-item lines="none">
+      <ion-button  class="add_new_car" [routerLink]="['./add']">
+        {{'MyCars.AddNewCar' | translate}}
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-list class="list-no">
+    <ion-item *ngFor="let car of cars|async" lines="none">
+      <ion-card *ngIf="car.user.id == userId" style="width: 100%;">
+        <img src="{{car.image}}" style="width: 100%;height: 300px;object-fit: fill">
+        <ion-card-content>
+          <p class="car_name">{{ car.name }}</p>
+          <div>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-icon name="star" style="color: #DEB754 !important;"></ion-icon><span class="rating-text">{{car.rating ? car.rating : 0}}</span>
+                </ion-col>
+                <ion-col>
+                  <p class="reviews_text">{{ car.reviews? car.reviews.length : 0}} {{'MyCars.reviews' | translate}}</p>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-item>
+                  <ion-button color="primary" slot="end" shape="round" [routerLink]="['./edit/'+car.id]">
+                    <ion-icon name="create"></ion-icon>
+                  </ion-button>
+                </ion-item>
+
+              </ion-row>
+            </ion-grid>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

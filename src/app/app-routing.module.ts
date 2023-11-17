@@ -31,12 +31,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/packages/add-package/add-package.module').then( m => m.AddPackagePageModule)
   },
   {
-    path: 'search-packages',
-    loadChildren: () => import('./pages/search-packages/search-packages.module').then( m => m.SearchPackagesPageModule)
-  },
-  {
-    path: 'service-groups',
-    loadChildren: () => import('./pages/service-groups/service-groups.module').then( m => m.ServiceGroupsPageModule)
+    path: 'search-cars',
+    loadChildren: () => import('./pages/search-cars/search-packages.module').then(m => m.SearchPackagesPageModule)
   },
   {
     path: 'services',
@@ -63,16 +59,20 @@ const routes: Routes = [
     loadChildren: () => import('./pages/terms/terms.module').then( m => m.TermsPageModule)
   },
   {
-    path: 'step2',
-    loadChildren: () => import('./pages/search-packages/details/order/step2/step2.module').then(m => m.Step2PageModule)
+    path: 'cars',
+    loadChildren: () => import('./pages/cars/cars.module').then(m => m.CarsPageModule)
   },
   {
-    path: 'step3',
-    loadChildren: () => import('./pages/search-packages/details/order/step3/step3.module').then(m => m.Step3PageModule)
+    path: 'customers',
+    loadChildren: () => import('./pages/customers/customers.module').then( m => m.CustomersPageModule)
   },
   {
-    path: 'step4',
-    loadChildren: () => import('./pages/search-packages/details/order/step4/step4.module').then(m => m.Step4PageModule)
+    path: 'my-cars',
+    loadChildren: () => import('./pages/my-cars/my-cars.module').then( m => m.MyCarsPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
   }
 ];
 @NgModule({

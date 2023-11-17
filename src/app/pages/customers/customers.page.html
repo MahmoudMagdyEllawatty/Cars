@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/']">
+        <ion-icon name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Customers List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-list class="list-no" style="margin-bottom: 60px;">
+    <ion-item *ngFor="let order of users|async" lines="none">
+      {{ order.name}}
+
+      <ion-button *ngIf="order.state == 0" color="primary" slot="end" shape="round" >
+        <ion-icon name="eye-off"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <ion-item *ngIf="!exist">
+      <div style="text-align: center">
+        <p text-center>No Customers Added YET!!!</p>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

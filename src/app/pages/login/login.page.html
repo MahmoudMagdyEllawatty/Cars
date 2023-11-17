@@ -1,34 +1,25 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="end">
-      <ion-button (click)="openLanguagePopover($event)">
-        <ion-icon name="more" slot="icon-only"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title>{{ 'Login.login' | translate }}</ion-title>
-  </ion-toolbar>
-</ion-header>
-<ion-content class="login-bg">
-<!--  <div text-center>-->
-<!--    <img src="../../../assets/imgs/logo.png" alt="logo" style="margin-top: 20px">-->
-<!--  </div>-->
 
-  <ion-list class="list" style="margin-top: 200px;">
-    <ion-item lines="none">
+<ion-content >
+  <div text-center>
+    <img src="../../../assets/imgs/logo.png" alt="logo" style="margin-top: 20px;width: 300px">
+  </div>
+
+  <ion-list class="list" style="margin-top: 20px;">
+
       <div text-center>
         <ion-input type="email" placeholder="{{ 'Login.email' | translate }}" [(ngModel)]="email"></ion-input>
       </div>
 
-    </ion-item>
 
-    <ion-item  lines="none" text-center>
-      <div text-center>
+
+
+      <div text-center style="margin-top: 20px">
         <ion-input  type="password" placeholder="{{ 'Login.password' | translate }}" [(ngModel)]="password"></ion-input>
       </div>
 
-    </ion-item>
 
-    <div text-center>
+
+    <div text-center style="margin-top: 20px">
         <ion-button (click)="login()" class="login" >{{ 'Login.login' | translate }}
         </ion-button>
     </div>

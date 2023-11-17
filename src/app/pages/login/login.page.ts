@@ -35,8 +35,8 @@ export class LoginPage implements OnInit {
   ngOnInit() {
       console.log(this.translateConfigService.selected);
       console.log('dd');
-        this.email = '';
-        this.password = '';
+      this.email = '';
+      this.password = '';
   }
 
   async login() {
@@ -44,7 +44,7 @@ export class LoginPage implements OnInit {
       spinner: 'bubbles'
     });
     await loading.present();
-    if (this.email === 'admin@party.com' && this.password === '1234567') {
+    if (this.email === 'admin@cars.com' && this.password === '1234567') {
       await loading.dismiss();
       this.router.navigate(['/admin-dashboard']);
     } else {

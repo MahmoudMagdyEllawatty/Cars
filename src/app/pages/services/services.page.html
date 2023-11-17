@@ -9,18 +9,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="login-bg">
+<ion-content  >
   <form [formGroup]="form" (ngSubmit)="submit(form.value)" class="list-no">
     <ion-card class="list-no">
       <ion-card-header>
-        <ion-card-title style="color: white">{{ 'Services.Add' | translate }}</ion-card-title>
+        <ion-card-title style="color: black">{{ 'Services.Add' | translate }}</ion-card-title>
       </ion-card-header>
 
       <ion-card-content>
 
         <ion-item class="list-no" lines="none">
-          <ion-label style="color: white" position="floating">{{ 'Services.Name' | translate }}</ion-label>
-          <ion-input  style="color: white" type="text" formControlName="name"></ion-input>
+          <ion-label style="color: black" position="floating">{{ 'Services.Name' | translate }}</ion-label>
+          <ion-input  style="color: black" type="text" formControlName="name"></ion-input>
         </ion-item>
         <div class="validation-errors">
           <ng-container *ngFor="let validation of validationMessages.name">
@@ -31,8 +31,21 @@
         </div>
 
         <ion-item class="list-no" lines="none">
-          <ion-label style="color: white" position="floating">{{ 'Services.Desc' | translate }}</ion-label>
-          <ion-input style="color: white" type="text" formControlName="description"></ion-input>
+          <ion-label style="color: black" position="floating">{{ 'Services.NameEn' | translate }}</ion-label>
+          <ion-input  style="color: black" type="text" formControlName="name_en"></ion-input>
+        </ion-item>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validationMessages.name_en">
+            <div class="error-message" *ngIf="form.get('name_en').hasError(validation.type) && (form.get('name_en').dirty || form.get('name_en').touched)">
+              <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+
+
+        <ion-item class="list-no" lines="none">
+          <ion-label style="color: black" position="floating">{{ 'Services.Desc' | translate }}</ion-label>
+          <ion-input style="color: black" type="text" formControlName="description"></ion-input>
         </ion-item>
         <div class="validation-errors">
           <ng-container *ngFor="let validation of validationMessages.description">
@@ -42,9 +55,21 @@
           </ng-container>
         </div>
 
+        <ion-item class="list-no" lines="none">
+          <ion-label style="color: black" position="floating">{{ 'Services.DescEn' | translate }}</ion-label>
+          <ion-input style="color: black" type="text" formControlName="description_en"></ion-input>
+        </ion-item>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validationMessages.description_en">
+            <div class="error-message" *ngIf="form.get('description_en').hasError(validation.type) && (form.get('description_en').dirty || form.get('description_en').touched)">
+              <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+
 <!--        <ion-item class="list-no" lines="none">-->
-<!--          <ion-label style="color: white" position="floating">{{ 'Services.Price' | translate }}</ion-label>-->
-<!--          <ion-input style="color: white" type="number" formControlName="price"></ion-input>-->
+<!--          <ion-label style="color: black" position="floating">{{ 'Services.Price' | translate }}</ion-label>-->
+<!--          <ion-input style="color: black" type="number" formControlName="price"></ion-input>-->
 <!--        </ion-item>-->
 <!--        <div class="validation-errors">-->
 <!--          <ng-container *ngFor="let validation of validationMessages.price">-->
@@ -55,10 +80,16 @@
 <!--        </div>-->
 
         <ion-item class="list-no" lines="none">
-          <ion-label style="color: white">{{ 'Services.Group' | translate }}</ion-label>
-          <ion-select style="color: white" formControlName="serviceGroup">
-            <ion-select-option style="color: white" *ngFor="let group of serviceGroups" value="{{group.id}}">{{ group.name }}</ion-select-option>
+          <ion-label style="color: black">{{ 'Services.Group' | translate }}</ion-label>
+          <ion-select style="color: black" formControlName="serviceGroup">
+            <ion-select-option style="color: black" *ngFor="let group of serviceGroups" value="{{group.id}}">{{ group.name }}</ion-select-option>
           </ion-select>
+        </ion-item>
+
+        <ion-item text-wrap class="fileUpload">
+          <ion-icon name="create" color="success">
+          </ion-icon>
+          <input type="file" class="upload" (change)="selectPhoto($event)"/>
         </ion-item>
 
         <ion-item text-wrap class="fileUpload">
@@ -77,8 +108,8 @@
   </form>
 
 
-  <ion-list  class="list-no">
-    <ion-item *ngFor="let service of services|async" lines="none" style="margin-top: 10px;">
+  <ion-list  class="list-no" style="margin-bottom: 60px;">
+    <ion-item *ngFor="let service of services|async;let i=index" lines="none" style="margin-top: 10px;">
       <img src="{{service.file}}" alt="{{service.name}}" width="50px" height="50px">
       <p style="margin-left: 10px;">{{ service.name }}</p>
 

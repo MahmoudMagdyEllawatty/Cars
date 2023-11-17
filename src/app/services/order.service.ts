@@ -1,23 +1,20 @@
 import { Injectable } from '@angular/core';
 import {User} from './user.service';
 import {Package, PackageService, PackageServices} from './package.service';
-import {Service} from './service.service';
+import {Service} from './categories.service';
 import {Observable} from 'rxjs';
 import {AngularFirestore, AngularFirestoreCollection, DocumentReference} from '@angular/fire/firestore';
 import {map, take} from 'rxjs/operators';
 import {ServiceGroup} from './service-group.service';
+import {Car} from './cars.service';
 
 
 export interface Order {
   id: string;
   user: User;
-  servicePackage: PackageServices[];
-  date: string;
-  time: string;
+  car: Car;
   state: number; // -1 => Order Rejected , 0 => Send , 1 => Order Accepted
-  phone: string;
-  address: string;
-  location: string;
+  carUser: User;
 }
 
 @Injectable({
@@ -52,7 +49,16 @@ export class OrderService {
   }
 
   getOrders(): Observable<Order[]> {
-    return this.orders;
+    return this.orderCollection.snapshotChanges()
+        .pipe(
+            map(actions => {
+              return actions.map(a => {
+                const data = a.payload.doc.data();
+                const id = a.payload.doc.id;
+                return { id, ...data };
+              });
+            })
+        );
   }
 
   getOrderById(id: string): Observable<Order> {

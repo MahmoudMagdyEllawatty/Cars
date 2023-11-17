@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {AngularFirestore, AngularFirestoreCollection, DocumentReference} from '@angular/fire/firestore';
 import {Order} from './order.service';
 import {map} from 'rxjs/operators';
-import {Service} from './service.service';
+import {Service} from './categories.service';
 
 export class MessageUsers {
   userId: string;

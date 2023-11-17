@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {ServiceGroup} from './service-group.service';
-import {Files, Service} from './service.service';
+import {Files, Service} from './categories.service';
 import {Observable} from 'rxjs';
 import {AngularFirestore, AngularFirestoreCollection, DocumentReference} from '@angular/fire/firestore';
 import {map, take} from 'rxjs/operators';
@@ -21,6 +21,8 @@ export interface Package {
   persons: number;
   image: string;
   packageServices: PackageServices[];
+  nameEn: string;
+  descriptionEn: string;
 }
 
 

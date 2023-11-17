@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {ModalController} from '@ionic/angular';
 import {SelectServicesPage} from '../select-services/select-services.page';
 import {runModuleAsObservableFork} from '@angular-devkit/build-angular/src/utils';
+import {Service} from '../../../services/categories.service';
 
 @Component({
   selector: 'app-select-groups',
@@ -24,12 +25,28 @@ export class SelectGroupsPage implements OnInit {
     console.log(this.packageServices);
   }
 
-  async openServices(id: ServiceGroup) {
+  async openServices(id: ServiceGroup, done: number) {
+    let oldAmount = 0;
+    let oldServices: Service[] = [];
+
+    if (done === 1) {
+      this.selectedPackageServices.forEach(item => {
+        if (item.serviceGroup.id === id.id) {
+          oldAmount = item.amount;
+          oldServices = item.services;
+        }
+      });
+    } else {
+      oldAmount = 1;
+      oldServices = [];
+    }
     const modal = await this.modalController.create({
       component: SelectServicesPage,
       componentProps: {
         group : id,
-        groupId: id.id
+        groupId: id.id,
+        oldAmount,
+        oldServices
       }
     });
 
@@ -59,4 +76,8 @@ export class SelectGroupsPage implements OnInit {
       return item.serviceGroup.id === group.id;
     });
   }
+
+    dismiss() {
+      this.modalController.dismiss();
+    }
 }

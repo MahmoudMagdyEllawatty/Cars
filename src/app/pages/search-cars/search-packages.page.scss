@@ -1,0 +1,86 @@
+ion-content{
+  --background: #F2ECED !important;
+}
+div{
+  width: 100%;
+}
+
+.search-icon{
+  margin-left: 10px;
+  color: #FF1D38 !important;
+  --color:#FF1D38 !important;
+}
+
+.all_cars{
+  --background: #FF1D38;
+  --border-radius: 32px;
+}
+
+ion-card-content{
+  position: absolute;
+  left: 19px;
+  bottom: 20px;
+  border-radius: 18px;
+  background: #FAF9F9;
+}
+
+.all-text{
+  color: #FAF9F9;
+  font-family: DM Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.225px;
+}
+.hello-message{
+  color: #101018;
+  font-family: DM Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.322px;
+  float: left;
+  max-width: 200px;
+}
+ion-input{
+  margin: auto;
+  width: 90%;
+  min-width: 90%;
+  max-width: 90%;
+  --color: black;
+  --background: #fff;
+  border-radius: 30px !important;
+  border:none !important;
+}
+.default_avatar{
+  width: 81px;
+  height: 81px;
+  flex-shrink: 0;
+  float: right;
+}
+
+.discover_cars{
+  color: #101018;
+  font-family: DM Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.322px;
+}
+
+.list-no{
+  background: transparent !important;
+}
+
+ion-item{
+  --background: transparent !important;
+  max-width: 90%;
+  margin: auto;
+}
+
+ion-card{
+
+}

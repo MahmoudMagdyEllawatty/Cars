@@ -21,7 +21,9 @@ export class UpdatePackagePage implements OnInit {
       name: '',
       state: 1,
       persons: 0,
-      image : ''
+      image : '',
+      descriptionEn: '',
+      nameEn: ''
     };
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     console.log(id);

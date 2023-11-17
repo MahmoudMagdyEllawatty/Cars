@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/']">
+        <ion-icon name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Cars List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-list class="list-no" style="margin-bottom: 60px;">
+    <ion-item *ngFor="let order of cars|async" lines="none">
+      <ion-card >
+        <ion-card-content>
+          <ion-row>
+            <ion-col [routerLink]="['./details/',order.id]">
+              <img src="{{order.image}}">
+            </ion-col>
+            <ion-col>
+              <h2>{{order.name}}</h2>
+              <p>{{order.user.name}}</p>
+              <ion-item>
+                <ion-button color="danger" slot="end" shape="round" (click)="delete(order)">
+                  <ion-icon name="trash"></ion-icon>
+                </ion-button>
+              </ion-item>
+
+            </ion-col>
+          </ion-row>
+
+
+
+
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+
+    <ion-item *ngIf="!exist">
+      <p>No Cars Added YET!!!</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

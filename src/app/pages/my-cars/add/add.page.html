@@ -1,0 +1,202 @@
+
+<ion-content padding>
+  <form [formGroup]="form" class="list"  (ngSubmit)="register(form.value)">
+
+    <ion-list class="list-no">
+      <ion-item lines="none">
+        <ion-label>{{ 'MyCars.name' | translate }}</ion-label>
+      </ion-item>
+      <ion-item lines="none" text-center>
+
+        <ion-input type="text"  formControlName="name" placeholder="{{ 'MyCars.name' | translate }}"></ion-input>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validationMessages.name">
+            <div class="error-message" *ngIf="form.get('name').hasError(validation.type) && (form.get('name').dirty || form.get('name').touched)">
+              <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>{{ 'MyCars.brand' | translate }}</ion-label>
+      </ion-item>
+      <ion-item class="list-no" lines="none">
+
+        <ion-select style="color: black;max-height: 100%" formControlName="brand">
+          <ion-select-option style="color: black" *ngFor="let group of brands" value="{{group.id}}">{{ group.name }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validationMessages.brand">
+          <div class="error-message" *ngIf="form.get('brand').hasError(validation.type) && (form.get('brand').dirty || form.get('brand').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-item lines="none">
+        <ion-label>{{ 'MyCars.price' | translate }}</ion-label>
+      </ion-item>
+      <ion-item lines="none" text-center>
+
+        <ion-input type="number" step="0.01" formControlName="price" placeholder="{{ 'MyCars.price' | translate }}"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validationMessages.price">
+          <div class="error-message" *ngIf="form.get('price').hasError(validation.type) && (form.get('price').dirty || form.get('price').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-item lines="none">
+        <ion-label>{{ 'MyCars.address' | translate }}</ion-label>
+      </ion-item>
+      <ion-item lines="none" text-center>
+
+        <ion-input type="text"  formControlName="address" placeholder="{{ 'MyCars.address' | translate }}"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validationMessages.address">
+          <div class="error-message" *ngIf="form.get('address').hasError(validation.type) && (form.get('address').dirty || form.get('address').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+
+      <ion-item lines="none">
+        <ion-label>{{ 'MyCars.year' | translate }}</ion-label>
+      </ion-item>
+      <ion-item lines="none"  text-center>
+
+        <ion-input type="text" placeholder="{{ 'MyCars.year' | translate }}" formControlName="year"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validationMessages.year">
+          <div class="error-message" *ngIf="form.get('year').hasError(validation.type) && (form.get('year').dirty || form.get('year').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+
+      <ion-item lines="none">
+        <ion-label>{{ 'MyCars.motor' | translate }}</ion-label>
+      </ion-item>
+      <ion-item lines="none"  text-center>
+
+        <ion-input type="text" placeholder="{{ 'MyCars.motor' | translate }}" formControlName="motor"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validationMessages.motor">
+          <div class="error-message" *ngIf="form.get('motor').hasError(validation.type) && (form.get('motor').dirty || form.get('motor').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-item lines="none">
+        <ion-label>{{ 'MyCars.model' | translate }}</ion-label>
+      </ion-item>
+      <ion-item lines="none"  text-center>
+
+        <ion-input type="text" placeholder="{{ 'MyCars.model' | translate }}" formControlName="model"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validationMessages.model">
+          <div class="error-message" *ngIf="form.get('model').hasError(validation.type) && (form.get('model').dirty || form.get('model').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+
+      <ion-item lines="none">
+        <ion-label>{{ 'MyCars.seats' | translate }}</ion-label>
+      </ion-item>
+      <ion-item lines="none"  text-center>
+
+        <ion-input type="text" placeholder="{{ 'MyCars.seats' | translate }}" formControlName="seats"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validationMessages.seats">
+          <div class="error-message" *ngIf="form.get('seats').hasError(validation.type) && (form.get('seats').dirty || form.get('seats').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+
+      <ion-item lines="none">
+        <ion-label>{{ 'MyCars.fuel_type' | translate }}</ion-label>
+      </ion-item>
+      <ion-item lines="none"  text-center>
+
+        <ion-input type="text" placeholder="{{ 'MyCars.fuel_type' | translate }}" formControlName="fuel_type"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validationMessages.fuel_type">
+          <div class="error-message" *ngIf="form.get('fuel_type').hasError(validation.type) && (form.get('fuel_type').dirty || form.get('fuel_type').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+
+      <ion-item lines="none">
+        <ion-label>{{ 'MyCars.color' | translate }}</ion-label>
+      </ion-item>
+      <ion-item lines="none"  text-center>
+
+        <ion-input type="text" placeholder="{{ 'MyCars.color' | translate }}" formControlName="color"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validationMessages.color">
+          <div class="error-message" *ngIf="form.get('color').hasError(validation.type) && (form.get('color').dirty || form.get('color').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-item lines="none">
+        <ion-label>{{ 'MyCars.image' | translate }}</ion-label>
+      </ion-item>
+      <ion-item text-wrap class="fileUpload" lines="none">
+        <ion-icon name="create" color="success">
+        </ion-icon>
+        <input type="file" class="upload" (change)="selectPhoto($event)"/>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validationMessages.motor">
+          <div class="error-message" *ngIf="form.get('motor').hasError(validation.type) && (form.get('motor').dirty || form.get('motor').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+
+      <ion-item lines="none">
+        <ion-label>{{ 'MyCars.album' | translate }}</ion-label>
+      </ion-item>
+      <ion-item text-wrap class="fileUpload" lines="none">
+        <ion-icon name="create" color="success">
+        </ion-icon>
+        <input type="file" class="upload" multiple (change)="selectPhotos($event)"/>
+      </ion-item>
+
+
+
+
+    </ion-list>
+
+
+    <div text-center>
+      <ion-button class="login"  type="submit" [disabled]="!form.valid">{{ 'MyCars.create' | translate }}</ion-button>
+    </div>
+
+
+  </form>
+
+</ion-content>

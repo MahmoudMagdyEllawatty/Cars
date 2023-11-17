@@ -1,0 +1,96 @@
+
+ion-card{
+
+}
+
+.table ion-col{
+  border: solid 2px #000000;
+}
+
+.rating_text{
+  color: #101018;
+  font-family: DM Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.225px;
+  vertical-align:super;
+}
+
+.address_text{
+  color: #FF1D38;
+  font-family: DM Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.225px;
+}
+
+
+.button_reviews_text{
+  color: #DE7254;
+  font-family: DM Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.225px;
+}
+
+
+.car_name{
+  color:  #101018;
+  font-family: DM Sans;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.515px;
+}
+.list-no{
+  background: transparent !important;
+}
+
+.back_button{
+  --border-radius: 14.4px;
+  --background: #FFF;
+  --box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.login{
+  text-align: center;
+  width: 80%;
+  --color: #ffffff;
+  min-width: 200px;
+  --background: #FF347A;
+  --border-radius: 5px;
+  --box-shadow: B8B4B4;
+  height: 50px;
+  --border-radius: 36px;
+}
+
+.login-sec{
+  min-width: 100%;
+  --background: #5C8BF7;
+  --border-radius: 5px;
+  --box-shadow: B8B4B4;
+}
+
+.login[disabled]{
+  min-width: 200px;
+  --background: #526723;
+  --border-radius: 20px;
+  --box-shadow: B8B4B4;
+}
+
+.list-no{
+  background: white !important;
+}
+
+ion-item{
+  --background: transparent !important;
+}

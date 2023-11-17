@@ -14,39 +14,17 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-                import('../search-packages/search-packages.module').then(m => m.SearchPackagesPageModule)
+                import('../search-cars/search-packages.module').then(m => m.SearchPackagesPageModule)
           },
           {
             path: 'details/:id',
             loadChildren: () =>
-                import('../search-packages/details/details.module').then(m => m.DetailsPageModule)
+                import('../search-cars/details/details.module').then(m => m.DetailsPageModule)
           },
           {
-            path: 'details/:id/order',
+            path: 'details/:id/payment',
             loadChildren: () =>
-                import('../search-packages/details/order/order.module').then(m => m.OrderPageModule)
-          }, {
-            path: 'details/:id/step2',
-            loadChildren: () =>
-                import('../search-packages/details/order/step2/step2.module').then(m => m.Step2PageModule)
-          }, {
-            path: 'details/:id/step3',
-            loadChildren: () =>
-                import('../search-packages/details/order/step3/step3.module').then(m => m.Step3PageModule)
-          }, {
-            path: 'details/:id/step4',
-            loadChildren: () =>
-                import('../search-packages/details/order/step4/step4.module').then(m => m.Step4PageModule)
-          },
-          {
-            path: 'details/:id/order/payment',
-            loadChildren: () =>
-                import('../search-packages/details/order/payment/payment.module').then(m => m.PaymentPageModule)
-          },
-          {
-            path: 'details/:id/order/delivery-details',
-            loadChildren: () =>
-                import('../search-packages/details/order/delivery-details/delivery-details.module').then(m => m.DeliveryDetailsPageModule)
+                import('../search-cars/details/payment/payment.module').then(m => m.PaymentPageModule)
           }
         ]
       },
@@ -67,6 +45,26 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
                 import('../user-messages/user-messages.module').then(m => m.UserMessagesPageModule)
+          }
+        ]
+      },
+      {
+        path: 'tab4',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+                import('../my-cars/my-cars.module').then(m => m.MyCarsPageModule)
+          }
+        ]
+      },
+      {
+        path: 'tab5',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+                import('../profile/profile.module').then(m => m.ProfilePageModule)
           }
         ]
       },

@@ -7,9 +7,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="login-bg">
+<ion-content  style="margin-bottom: 140px !important;">
   <form [formGroup]="form" (ngSubmit)="submit(form.value)" class="list-no">
-    <ion-card class="list-no">
+  
+    <ion-card class="list-no" style="margin-bottom: 60px !important;">
       <ion-card-header>
         {{ 'Packages.Add' | translate }}
       </ion-card-header>
@@ -25,7 +26,17 @@
             </div>
           </ng-container>
         </div>
-
+        <ion-item lines="none">
+          <ion-label position="floating">{{ 'Packages.NameEn' | translate }}</ion-label>
+          <ion-input type="text" formControlName="name_en"></ion-input>
+        </ion-item>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validationMessages.name_en">
+            <div class="error-message" *ngIf="form.get('name_en').hasError(validation.type) && (form.get('name_en').dirty || form.get('name_en').touched)">
+              <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
 
         <ion-item lines="none">
           <ion-label position="floating">{{ 'Packages.Desc' | translate }}</ion-label>
@@ -34,6 +45,18 @@
         <div class="validation-errors">
           <ng-container *ngFor="let validation of validationMessages.description">
             <div class="error-message" *ngIf="form.get('description').hasError(validation.type) && (form.get('description').dirty || form.get('description').touched)">
+              <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+
+        <ion-item lines="none">
+          <ion-label position="floating">{{ 'Packages.DescEn' | translate }}</ion-label>
+          <ion-textarea  type="text" formControlName="description_en"></ion-textarea>
+        </ion-item>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validationMessages.description_en">
+            <div class="error-message" *ngIf="form.get('description_en').hasError(validation.type) && (form.get('description_en').dirty || form.get('description_en').touched)">
               <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
             </div>
           </ng-container>
@@ -74,13 +97,13 @@
 
         <div text-center>
               <ion-button (click)="selectPackageServices()" class="login-sec" [disabled]="!form.valid">{{ 'Packages.Services' | translate }}</ion-button>
+              <ion-button class="login" type="submit" [disabled]="!(form.valid && packageServices.length >0)">{{ 'Actions.Save' | translate }}</ion-button>
             </div>
 
+            
       </ion-card-content>
 
-      <div text-center>
-        <ion-button class="login" type="submit" [disabled]="!(form.valid && packageServices.length == 6)">{{ 'Actions.Save' | translate }}</ion-button>
-      </div>
+      
 
     </ion-card>
   </form>

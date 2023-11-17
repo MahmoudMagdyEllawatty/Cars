@@ -5,14 +5,13 @@
 export const environment = {
   production: false,
   firabase : {
-    apiKey: 'AIzaSyA2n3DxUXNvUshd29OJpmtrccNaqiKvNjs',
-    authDomain: 'party-coordinator-5dd7f.firebaseapp.com',
-    databaseURL: 'https://party-coordinator-5dd7f.firebaseio.com',
-    projectId: 'party-coordinator-5dd7f',
-    storageBucket: 'party-coordinator-5dd7f.appspot.com',
-    messagingSenderId: '846468327273',
-    appId: '1:846468327273:web:6b8dfe2fb4eaa359917ff8',
-    measurementId: 'G-LGVW6FY7Y0'
+    apiKey: 'AIzaSyA41Tti5herstn2WD5cFWtNNFNtVcdq5zw',
+    authDomain: 'cars-5e669.firebaseapp.com',
+    projectId: 'cars-5e669',
+    storageBucket: 'cars-5e669.appspot.com',
+    messagingSenderId: '797960635984',
+    appId: '1:797960635984:web:361fd4c417ec18c3d53355',
+    measurementId: 'G-FHT0HB16VJ'
   }
 };
 

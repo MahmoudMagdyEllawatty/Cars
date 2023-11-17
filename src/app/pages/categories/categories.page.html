@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/']">
+        <ion-icon name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Categories</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  >
+  <form [formGroup]="form" (ngSubmit)="submit(form.value)" class="list-no">
+    <ion-card class="list-no">
+      <ion-card-header>
+        <ion-card-title style="color: black">Brand Data</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+
+        <ion-item class="list-no" lines="none">
+          <ion-label style="color: black" position="floating">Brand Name</ion-label>
+          <ion-input  style="color: black" type="text" formControlName="name"></ion-input>
+        </ion-item>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validationMessages.name">
+            <div class="error-message" *ngIf="form.get('name').hasError(validation.type) && (form.get('name').dirty || form.get('name').touched)">
+              <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+
+
+      </ion-card-content>
+
+
+      <div text-center>
+        <ion-button class="login" type="submit" [disabled]="!form.valid">Save</ion-button>
+      </div>
+    </ion-card>
+  </form>
+
+
+  <ion-list  class="list-no" style="margin-bottom: 60px;">
+    <ion-item *ngFor="let service of services|async;let i=index" lines="none" style="margin-top: 10px;">
+
+      <p style="margin-left: 10px;">{{ service.name }}</p>
+
+      <ion-button color="primary" slot="end" shape="round" (click)="edit(service)">
+        <ion-icon name="create"></ion-icon>
+      </ion-button>
+
+      <ion-button color="danger" slot="end" shape="round" (click)="delete(service)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+
+    </ion-item>
+  </ion-list>
+
+</ion-content>

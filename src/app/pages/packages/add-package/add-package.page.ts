@@ -4,7 +4,7 @@ import {LoadingController, ModalController} from '@ionic/angular';
 import {SelectGroupsPage} from '../select-groups/select-groups.page';
 import {Package, PackageService, PackageServices} from '../../../services/package.service';
 import {Router} from '@angular/router';
-import {Files} from '../../../services/service.service';
+import {Files} from '../../../services/categories.service';
 import {FileService} from '../../../services/file.service';
 
 @Component({
@@ -35,6 +35,16 @@ export class AddPackagePage implements OnInit {
       {type: 'required', message: 'Package Description is required'},
       {type: 'minLength', message: 'Package Description must be greater than 5 chars'},
       {type: 'maxLength', message: 'Package Description must be less than 50 chars'}
+    ],
+    name_en: [
+      {type: 'required', message: 'Package English Name is required'},
+      {type: 'minLength', message: 'Package English Name must be greater than 3 chars'},
+      {type: 'maxLength', message: 'Package English Name must be less than 25 chars'}
+    ],
+    description_en: [
+      {type: 'required', message: 'Package English Description is required'},
+      {type: 'minLength', message: 'Package English Description must be greater than 5 chars'},
+      {type: 'maxLength', message: 'Package English Description must be less than 50 chars'}
     ],
     price: [
       {type: 'required', message: 'Package Price is required'},
@@ -107,6 +117,16 @@ export class AddPackagePage implements OnInit {
         Validators.minLength(5),
         Validators.maxLength(50)
       ])),
+      name_en: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(25)
+      ])),
+      description_en: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(50)
+      ])),
       price: new FormControl('', Validators.compose([
         Validators.required,
         Validators.min(1)
@@ -127,7 +147,9 @@ export class AddPackagePage implements OnInit {
       packageServices: this.packageServices,
       state: 1,
       persons: value.persons,
-      image: this.imageURL
+      image: this.imageURL,
+      descriptionEn: value.description_en,
+      nameEn: value.name_en
     };
 
     this.packageService.addPackage(aPackage)

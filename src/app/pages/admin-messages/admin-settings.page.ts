@@ -4,7 +4,7 @@ import {Message, MessageUsers, SettingsService} from '../../services/settings.se
 import {User, UserService} from '../../services/user.service';
 import {Observable} from 'rxjs';
 import {AlertController, ToastController} from '@ionic/angular';
-import {Service} from '../../services/service.service';
+import {Service} from '../../services/categories.service';
 
 @Component({
   selector: 'app-admin-settings',

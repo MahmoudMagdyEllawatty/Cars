@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PackageService, PackageServices} from '../../../services/package.service';
-import {Service, ServiceService} from '../../../services/service.service';
+import {Service, CategoriesService} from '../../../services/categories.service';
 import {ModalController} from '@ionic/angular';
 import {ServiceGroup} from '../../../services/service-group.service';
 
@@ -14,16 +14,26 @@ export class SelectServicesPage implements OnInit {
   services: Service[];
   @Input() group: ServiceGroup;
   @Input() groupId: string;
+  @Input() oldServices: Service[];
+  @Input() oldAmount: number;
+
   amount: number;
-  constructor(private serviceService: ServiceService,
+  constructor(private serviceService: CategoriesService,
               private modalController: ModalController) { }
 
+  conmpare(o1, o2) {
+    return o1 && o2 ? o1.id === o2.id : o1 === o2;
+  }
   ngOnInit() {
+    this.amount = this.oldAmount;
+    this.selectedServices = this.oldServices;
+    console.log(this.oldServices);
+    console.log(this.oldAmount);
     this.serviceService.getServices()
         .subscribe(data => {
           this.services = [];
           data.forEach( item => {
-            if (item.serviceGroup === this.groupId) {
+            if (item.id === this.groupId) {
               this.services.push(item);
             }
           });
@@ -31,15 +41,20 @@ export class SelectServicesPage implements OnInit {
   }
 
   done() {
-    const packageService: PackageServices = {
-      serviceGroup: this.group,
-      services: this.selectedServices,
-      amount: this.amount
-    };
+    if (this.selectedServices.length > 0) {
+      const packageService: PackageServices = {
+        serviceGroup: this.group,
+        services: this.selectedServices,
+        amount: this.amount
+      };
 
-    this.modalController.dismiss({
-      data: packageService
-    });
+      this.modalController.dismiss({
+        data: packageService
+      });
+    } else {
+      alert('Enter Data First');
+    }
+
   }
 
   cancel() {

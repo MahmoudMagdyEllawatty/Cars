@@ -16,9 +16,6 @@ export class UserDashboardPage implements OnInit {
               private userService: UserService) { }
 
   ngOnInit() {
-      if (this.userService.user.state === 0) {
-          this.router.navigate(['/terms']);
-      } else {
           this.unreadCount = 0;
           this.messageService.getMessages()
               .subscribe(data => {
@@ -32,8 +29,6 @@ export class UserDashboardPage implements OnInit {
                   });
                   console.log(this.unreadCount);
               });
-      }
-
   }
 
 }

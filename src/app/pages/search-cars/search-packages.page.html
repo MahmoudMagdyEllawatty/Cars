@@ -1,0 +1,58 @@
+<ion-content >
+
+  <ion-list class="list-no">
+    <ion-item lines="none">
+      <div style="margin-top: 20px;">
+        <p class="hello-message">Hi 👋 {{userName}} !</p>
+        <img src="../../../assets/imgs/default_logo.png" alt="logo"  class="default_avatar">
+      </div>
+    </ion-item>
+
+    <ion-item  lines="none">
+      <div style="margin-top: 20px">
+        <ion-input placeholder="{{ 'Home.Search Hint' | translate }}" type="text" (ionInput)="search($event)" >
+          <ion-icon name="search" class="search-icon"></ion-icon>
+        </ion-input>
+
+      </div>
+    </ion-item>
+
+
+    <ion-item lines="none">
+      <p slot="start" class="discover_cars">{{ 'Home.Discover Cars' | translate }}</p>
+      <ion-button slot="end" class="all_cars" *ngIf="false">
+        <ion-icon slot="start" name="apps"></ion-icon>
+        {{ 'Home.All' | translate }}
+      </ion-button>
+    </ion-item>
+
+    <ion-item>
+      <ion-slides [options]="{ slidesPerView: 1, zoom: false, grabCursor: true }">
+        <ion-slide *ngFor="let car of cars" style="width: 600px; height: 300px; border: 2px solid #f8f8f8">
+          <ion-col>
+            <ion-card style="width: 100%;" [routerLink]="['./details/',car.id]">
+              <img src="{{car.image}}" style="width: 100%;height: 300px;object-fit: fill">
+              <ion-card-content>
+                <p class="car_name">{{ car.name }}</p>
+                <div>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col>
+                        <ion-icon name="star" style="color: #DEB754 !important;"></ion-icon><span class="rating-text">{{car.rating ? car.rating : 0}}</span>
+                      </ion-col>
+                      <ion-col>
+                        <p class="reviews_text">{{ car.rating_count}} {{'MyCars.reviews' | translate}}</p>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-slide>
+      </ion-slides>
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>

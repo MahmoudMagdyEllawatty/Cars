@@ -5,39 +5,62 @@
         <ion-icon name="log-out"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>My Orders</ion-title>
+    <ion-title>{{ 'Orders.Title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="login-bg">
-  <ion-list class="list-no">
-    <ion-item *ngFor="let order of orders" lines="none">
-      <ion-card class="list-no">
-        <ion-card-header>
-          <ion-card-title>
-            Address:{{ order.address }}
-          </ion-card-title>
-          <ion-card-subtitle>
-            Phone:{{ order.phone }}
-          </ion-card-subtitle>
-        </ion-card-header>
+<ion-content >
+  <ion-list>
+      <ion-radio-group (ionChange)="changeOrders($event)" [(ngModel)]="order_value">
+        <ion-row>
+          <ion-col>
+            <ion-radio value="my_orders" labelPlacement="stacked"></ion-radio>
+            <ion-label>{{'Orders.MyOrders' | translate }}</ion-label>
+          </ion-col>
+          <ion-col>
+            <ion-radio value="sent_orders">{{'Orders.SentOrders' | translate }}</ion-radio>
+            <ion-label>{{'Orders.SentOrders' | translate }}</ion-label>
+          </ion-col>
+        </ion-row>
 
+      </ion-radio-group>
+  </ion-list>
+
+  <ion-list *ngIf="order_value === 'my_orders'">
+    <ion-item *ngFor="let order of orders" >
+      <ion-card>
         <ion-card-content>
-          <h2>Date:{{ order.date }}</h2>
-          <h2>Time:{{ order.time }}</h2>
+          <ion-row>
+            <ion-col>
+              <img src="{{order.car.image}}">
+            </ion-col>
+            <ion-col>
+              <h2>{{order.car.name}}</h2>
+              <p>{{order.user.name}}</p>
+            </ion-col>
+          </ion-row>
 
-          <h1>Services :</h1>
-          <ion-item *ngFor="let ser of order.servicePackage" lines="none">
-              <ion-card class="list-no">
-                <ion-card-header>{{ ser.serviceGroup.name }}</ion-card-header>
-                <ion-card-content>
-                  <ion-item *ngFor="let s of ser.services" lines="none">
-                    <img src="{{s.file}}" alt="{{s.name}}" width="50px" height="50px" style="width: 50px;height: 50px">
-                      <h3> {{ s.name }}</h3>
-                  </ion-item>
-                </ion-card-content>
-              </ion-card>
-          </ion-item>
+
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="order_value === 'sent_orders'">
+    <ion-item *ngFor="let order of orders" >
+      <ion-card>
+        <ion-card-content>
+          <ion-row>
+            <ion-col>
+              <img src="{{order.car.image}}">
+            </ion-col>
+            <ion-col>
+              <h2>{{order.car.name}}</h2>
+              <p>{{order.carUser.name}}</p>
+            </ion-col>
+          </ion-row>
+
+
         </ion-card-content>
       </ion-card>
     </ion-item>

@@ -6,7 +6,8 @@
     "login": "Login",
     "account": "Create Account",
     "cPassword": "Confirm Password",
-    "create": "Create Account"
+    "create": "Create Account",
+    "update_profile" : "Update Profile"
   },
   "ServiceGroups": {
     "Title": "Service Groups",
@@ -19,8 +20,10 @@
   "Name": "Service Name",
   "Desc": "Description",
   "Price": "Price",
-  "Group": "Section"
-},
+  "Group": "Section",
+    "NameEn": "Service English Name",
+    "DescEn": "English Description"
+  },
   "Packages": {
     "DoneServices" : "Done",
     "Service": "Service",
@@ -29,6 +32,8 @@
     "Add": "Add Package",
     "Name": "Package Name",
     "Desc": "Description",
+    "NameEn": "Package English Name",
+    "DescEn": "English Description",
     "Price": "Price",
     "Services": "Select Services",
     "Groups": "Sections",
@@ -51,7 +56,7 @@
     "HolderName": "Holder Name",
     "CardNo": "Card No",
     "Expiry": "Expiry Date",
-    "CVC": "CVC",
+    "CVC": "Pin",
     "Pay": "Pay"
   },
   "Orders": {
@@ -63,7 +68,9 @@
     "Phone": "Phone",
     "Date": "Date",
     "Time": "Time",
-    "Services": "Services"
+    "Services": "Services",
+    "MyOrders": "My Orders",
+    "SentOrders": "Sent Orders"
   },
   "Messages": {
     "Title": "Messages",
@@ -82,5 +89,41 @@
     "Data": "1-\tPay 25 % KNet as down payments and the remain cash.\n2-\tPay 50 KWD as insurance against damages.\n3-\tCancelation before appointment by week at least.\n4-\tMoney Not returns in cancelation.\n",
     "Accept": "Accept",
     "Reject": "Reject"
+  },
+  "Menu": {
+    "home" : "Home"
+  },
+  "Home": {
+    "Search Hint" : "Start Searching Here..",
+    "Discover Cars" : "Discover Cars",
+    "All" : "All"
+  },
+  "MyCars": {
+    "Title" : "My Cars",
+    "AddNewCar" : "Add New Car",
+    "name" : "Name",
+    "brand" : "Brand",
+    "price" : "Price",
+    "year" : "Manufacture Year",
+    "motor" : "Motor",
+    "model" : "Model",
+    "seats" : "Seats Count",
+    "fuel_type" : "Fuel Type",
+    "color" : "Color",
+    "create": "Create",
+    "reviews": "Reviews",
+    "Read_Reviews" : "Read Reviews",
+    "Buy" : "Buy",
+    "image": "Image",
+    "album": "Album",
+    "address": "Address"
+  },
+  "Profile": {
+    "Title": "Profile"
+  },
+  "Reviews": {
+    "review" : "Review",
+    "rating": "Rating",
+    "add_review": "Add Review"
   }
 }

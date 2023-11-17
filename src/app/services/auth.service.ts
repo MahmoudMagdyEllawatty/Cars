@@ -19,6 +19,18 @@ export class AuthService {
     });
   }
 
+  updateEmail(email: string) {
+    return this.auth.auth.currentUser.updateEmail(email);
+  }
+
+  updatePassword(password: string) {
+    return this.auth.auth.currentUser.updatePassword(password);
+  }
+
+  getUserEmail() {
+    return this.auth.auth.currentUser.email;
+  }
+
 
   register(mail: string, pass: string) {
     return this.auth.auth.createUserWithEmailAndPassword(mail, pass);

@@ -1,17 +1,13 @@
-\<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>{{ 'Login.account' | translate }}</ion-title>
-  </ion-toolbar>
-</ion-header>
-<ion-content padding class="login-bg form-content">
+
+<ion-content padding >
+  <div text-center>
+    <img src="../../../assets/imgs/logo.png" alt="logo" style="margin-top: 20px;width: 300px">
+  </div>
+
   <form [formGroup]="validationsForm" class="list"  (ngSubmit)="register(validationsForm.value)">
-    <ion-card class="list-no">
-      <ion-card-content>
+
         <ion-list class="list-no">
-          <ion-item lines="none">
+          <ion-item lines="none" text-center>
             <ion-input type="text" formControlName="username" placeholder="{{ 'Login.name' | translate }}"></ion-input>
           </ion-item>
           <div class="validation-errors">
@@ -22,7 +18,7 @@
             </ng-container>
           </div>
 
-          <ion-item lines="none">
+          <ion-item lines="none"  text-center>
             <ion-input type="text" placeholder="{{ 'Login.email' | translate }}" formControlName="email"></ion-input>
           </ion-item>
           <div class="validation-errors">
@@ -33,8 +29,8 @@
             </ng-container>
           </div>
 
-          <div formGroupName="matching_passwords">
-            <ion-item lines="none">
+          <div formGroupName="matching_passwords" text-center>
+            <ion-item lines="none" text-center>
               <ion-input type="password" placeholder="{{ 'Login.password' | translate }}" formControlName="password"></ion-input>
             </ion-item>
             <div class="validation-errors">
@@ -45,7 +41,7 @@
               </ng-container>
             </div>
 
-            <ion-item lines="none">
+            <ion-item lines="none" text-center>
               <ion-input type="password" placeholder="{{ 'Login.cPassword' | translate }}" formControlName="confirm_password"></ion-input>
             </ion-item>
             <div class="validation-errors">
@@ -66,12 +62,12 @@
           </div>
 
         </ion-list>
-      </ion-card-content>
+
 
       <div text-center>
         <ion-button class="login"  type="submit" [disabled]="!validationsForm.valid">{{ 'Login.create' | translate }}</ion-button>
       </div>
 
-    </ion-card>
+
   </form>
 </ion-content>
